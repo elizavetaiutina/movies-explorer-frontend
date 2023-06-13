@@ -1,0 +1,95 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
+  min-height: 100vh;
+  max-width: 1280px;
+  margin: 0;
+  padding: 0;
+}
+
+.not-found__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  margin: 0;
+  padding: 0;
+}
+
+.not-found__title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 140px;
+  line-height: 169px;
+  text-align: center;
+  color: #000000;
+
+  margin: 0;
+  padding: 0;
+}
+
+.not-found__subtitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #000000;
+
+  margin: 0;
+  padding: 0;
+}
+
+.not-found__link-back {
+  text-decoration: none;
+  cursor: pointer;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #3456f3;
+
+  margin: 184px 0 0;
+  padding: 0;
+}
+
+.not-found__link-back:hover {
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 988px) {
+  .not-found__wrapper {
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .not-found__wrapper {
+    gap: 20px;
+  }
+
+  .not-found__title {
+    font-size: 80px;
+    line-height: 97px;
+  }
+
+  .not-found__subtitle {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .not-found__link-back {
+    font-size: 12px;
+    line-height: 15px;
+
+    margin-top: 284px;
+  }
+}
