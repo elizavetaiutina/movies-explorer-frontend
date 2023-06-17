@@ -1,0 +1,49 @@
+.nav {
+  display: flex;
+  gap: 10px;
+
+  margin: 0;
+  padding: 0;
+}
+
+.nav__link {
+  text-decoration: none;
+  cursor: pointer;
+
+  width: 96px;
+  height: 36px;
+  box-sizing: border-box;
+  background: #e8e8e8;
+  border-radius: 10px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #000000;
+  text-align: center;
+
+  margin: 0;
+  padding: 10px 0;
+}
+
+.nav__link:hover {
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 520px) {
+  .nav {
+    gap: 6px;
+  }
+
+  .nav__link {
+    width: 82px;
+    height: 26px;
+
+    font-size: 10px;
+    line-height: 16px;
+
+    padding: 5px 0;
+  }
+}
