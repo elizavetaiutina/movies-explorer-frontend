@@ -49,6 +49,8 @@
 
   display: flex;
   justify-content: space-between;
+
+  transition: opacity 0.2s ease-in-out;
 }
 
 .portfolio__link:hover {

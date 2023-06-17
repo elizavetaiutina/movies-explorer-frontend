@@ -6,12 +6,14 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <div className="header">
-      <img src={logo} alt="Логотип- Место" className="logo" />
+      <Link to="/" className="header__link">
+        <img src={logo} alt="Логотип- Место" className="logo" />
+      </Link>
       <div className="header__links">
-        <Link to="/" className="header__signup">
+        <Link to="/signup" className="header__signup">
           Регистрация
         </Link>
-        <Link to="/" className="header__signin">
+        <Link to="/signin" className="header__signin">
           Войти
         </Link>
       </div>

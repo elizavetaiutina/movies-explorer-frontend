@@ -8,6 +8,14 @@
   padding: 18px 70px;
 }
 
+.header__link {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.header__link:hover {
+  opacity: 0.5;
+}
+
 .header__links {
   display: flex;
   gap: 30px;
@@ -30,6 +38,8 @@
 
   margin: 0;
   padding: 0;
+
+  transition: opacity 0.2s ease-in-out;
 }
 
 .header__signup:hover {
@@ -52,6 +62,8 @@
   border-radius: 3px;
   margin: 0;
   padding: 8px 20px;
+
+  transition: opacity 0.2s ease-in-out;
 }
 
 .header__signin:hover {

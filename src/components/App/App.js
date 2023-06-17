@@ -7,6 +7,9 @@ import Login from "../Login/Login";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
+import Movies from "../Movies/Movies";
+import SavedMovies from "../SavedMovies/SavedMovies";
+import Profile from "../Profile/Profile";
 
 function App() {
   const { pathname } = useLocation();
@@ -17,6 +20,9 @@ function App() {
         <Route path="/signup" element={<Register />} />
         <Route path="/signin" element={<Login />} />
         <Route path="/" element={<Main />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/saved-movies" element={<SavedMovies />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       {pathname === "/" || pathname === "/" ? <Footer /> : null}
