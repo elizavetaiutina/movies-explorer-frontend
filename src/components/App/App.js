@@ -13,9 +13,15 @@ import Profile from "../Profile/Profile";
 
 function App() {
   const { pathname } = useLocation();
+
   return (
     <div className="App">
-      {pathname === "/" || pathname === "/" ? <Header /> : null}
+      {pathname === "/" ||
+      pathname === "/movies" ||
+      pathname === "/saved-movies" ||
+      pathname === "/profile" ? (
+        <Header />
+      ) : null}
       <Routes>
         <Route path="/signup" element={<Register />} />
         <Route path="/signin" element={<Login />} />
@@ -25,7 +31,9 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-      {pathname === "/" || pathname === "/" ? <Footer /> : null}
+      {pathname === "/" || pathname === "/movies" || pathname === "/saved-movies" ? (
+        <Footer />
+      ) : null}
     </div>
   );
 }

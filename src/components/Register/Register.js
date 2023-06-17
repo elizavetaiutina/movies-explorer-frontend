@@ -12,38 +12,46 @@ function Register() {
             <img src={logo} alt="Логотип- Место" className="logo" />
           </Link>
           <h1 className="sign-up__title">Добро пожаловать!</h1>
-          <form name="register" className="form form_type_sign-up">
-            <label className="form__label">Имя</label>
+          <form name="register" className="form-register form_type_sign-up">
+            <label className="form-register__label" htmlFor="name">
+              Имя
+            </label>
             <input
               type="text"
               name="name"
               id="name"
-              className="form__input"
+              className="form-register__input"
               autoComplete="off"
               required
             />
-            <span className="name-input-error form__span-error"></span>
-            <label className="form__label">E-mail</label>
+            <span className="name-input-error form-register__span-error"></span>
+            <label className="form-register__label" htmlFor="email">
+              E-mail
+            </label>
             <input
               type="email"
               name="email"
               id="email"
-              className="form__input"
+              className="form-register__input"
               autoComplete="off"
               required
             />
-            <span className="email-input-error form__span-error"></span>
-            <label className="form__label">Пароль</label>
+            <span className="email-input-error form-register__span-error"></span>
+            <label className="form-register__label" htmlFor="password">
+              Пароль
+            </label>
             <input
               type="password"
               name="password"
               id="password"
-              className="form__input form__input_type_error"
+              className="form-register__input form-register__input_type_error"
               autoComplete="off"
               required
             />
-            <span className="password-input-error form__span-error">Что-то пошло не так...</span>
-            <button type="submit" className="form__button">
+            <span className="password-input-error form-register__span-error">
+              Что-то пошло не так...
+            </span>
+            <button type="submit" className="form-register__button">
               Зарегистрироваться
             </button>
           </form>

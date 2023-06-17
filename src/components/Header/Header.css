@@ -16,60 +16,6 @@
   opacity: 0.5;
 }
 
-.header__links {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-
-  margin: 0;
-  padding: 0;
-}
-
-.header__signup {
-  text-decoration: none;
-  cursor: pointer;
-
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  color: #000000;
-
-  margin: 0;
-  padding: 0;
-
-  transition: opacity 0.2s ease-in-out;
-}
-
-.header__signup:hover {
-  opacity: 0.5;
-}
-
-.header__signin {
-  text-decoration: none;
-  cursor: pointer;
-
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  align-items: center;
-  color: #ffffff;
-
-  background: #3456f3;
-  border-radius: 3px;
-  margin: 0;
-  padding: 8px 20px;
-
-  transition: opacity 0.2s ease-in-out;
-}
-
-.header__signin:hover {
-  opacity: 0.5;
-}
-
 @media screen and (max-width: 988px) {
   .header {
     padding: 18px 30px;
@@ -79,19 +25,5 @@
 @media screen and (max-width: 520px) {
   .header {
     padding: 18px 14px;
-  }
-
-  .header__links {
-    gap: 14px;
-  }
-
-  .header__signup {
-    font-size: 10px;
-  }
-
-  .header__signin {
-    font-size: 10px;
-
-    padding: 5px 12px;
   }
 }

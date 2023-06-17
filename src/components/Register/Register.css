@@ -35,15 +35,12 @@
   height: 38px;
 }
 
-.form {
+.form-register {
   display: flex;
   flex-direction: column;
 }
 
-.form_type_sign-up {
-}
-
-.form__label {
+.form-register__label {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -55,7 +52,7 @@
   padding: 0;
 }
 
-.form__input {
+.form-register__input {
   box-sizing: border-box;
   width: 100%;
   background-color: #ffffff;
@@ -73,12 +70,12 @@
   color: #000000;
 }
 
-.form__input:focus {
+.form-register__input:focus {
   outline: none;
   border-bottom: 1px solid #3456f3;
 }
 
-.form__span-error {
+.form-register__span-error {
   box-sizing: border-box;
   min-height: 24px;
   width: 100%;
@@ -95,7 +92,7 @@
   transition: opacity 0.3s linear;
 }
 
-.form__input_type_error {
+.form-register__input_type_error {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -104,7 +101,7 @@
   color: #ee3465;
 }
 
-.form__button {
+.form-register__button {
   background: #3456f3;
   border: none;
   border-radius: 3px;
@@ -126,7 +123,7 @@
   transition: opacity 0.2s ease-in-out;
 }
 
-.form__button:hover {
+.form-register__button:hover {
   opacity: 0.85;
 }
 
@@ -147,6 +144,8 @@
 
 .sign-up__link {
   text-decoration: none;
+  cursor: pointer;
+
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -176,12 +175,12 @@
     margin: 40px 0;
   }
 
-  .form__input_type_error {
+  .form-register__input_type_error {
     font-size: 10px;
     line-height: 12px;
   }
 
-  .form__button {
+  .form-register__button {
     font-size: 12px;
     line-height: 15px;
     padding: 15px 0;
