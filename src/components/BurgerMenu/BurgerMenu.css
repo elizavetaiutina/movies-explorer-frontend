@@ -22,7 +22,7 @@
   background: #fafafa;
 
   margin: 0;
-  padding: 159px 90px 90px;
+  padding: 159px 100px 90px;
   opacity: 1;
 }
 
@@ -54,7 +54,6 @@
 .menu {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   height: 100%;
 
@@ -118,7 +117,7 @@
   border-radius: 20px;
 
   padding: 8px 20px;
-  margin: 0;
+  margin: 621px 0 0;
 
   transition: opacity 0.2s ease-in-out;
 }
@@ -141,6 +140,10 @@
     gap: 15px;
   }
 
+  .menu__button {
+  margin: 435px 0 0;
+}
+  
   .menu__link {
     padding: 0 0 7px;
   }
