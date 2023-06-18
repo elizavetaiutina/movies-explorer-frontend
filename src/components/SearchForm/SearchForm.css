@@ -50,7 +50,7 @@
   color: #a0a0a0;
 
   margin: 0;
-  padding: 25px 63px;
+  padding: 20px 63px 25px;
 }
 
 .search-form__button {
@@ -60,7 +60,7 @@
   background-position: center;
   opacity: 1;
   width: 34px;
-  height: 34px;
+  height: 38px;
   border: none;
   cursor: pointer;
   transition: opacity 0.2s ease-in-out;
@@ -70,8 +70,8 @@
   padding: 0;
 
   position: absolute;
-  top: 19px;
-  right: 30px;
+  top: 14px;
+  right: 52px;
 }
 
 .search-form__button:hover {
