@@ -1,7 +1,7 @@
 .aboutme {
   box-sizing: border-box;
   margin: 0;
-  padding: 110px 70px 100px;
+  padding: 110px 80px 100px 60px;
 
   display: flex;
   flex-direction: column;
