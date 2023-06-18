@@ -88,11 +88,12 @@
 
 @media screen and (max-width: 988px) {
   .techs {
-    padding: 90px 50px;
+    padding: 91px 50px 89px;
   }
 
   .techs__title {
-    margin-bottom: 80px;
+    margin-bottom: 81px;
+    padding-bottom: 22px;
   }
 
   .techs__name {
@@ -103,7 +104,7 @@
     font-size: 12px;
     line-height: 18px;
 
-    margin-bottom: 83px;
+    margin-bottom: 82px;
   }
 
   .techs__item {
