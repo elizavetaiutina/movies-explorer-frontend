@@ -14,9 +14,8 @@
 .not-found__wrapper {
   display: flex;
   flex-direction: column;
-  gap: 40px;
 
-  margin: 0;
+  margin: 13px 0 0;
   padding: 0;
 }
 
@@ -29,7 +28,7 @@
   text-align: center;
   color: #000000;
 
-  margin: 0;
+  margin: 8px 0 0;
   padding: 0;
 }
 
@@ -69,13 +68,14 @@
 
 @media screen and (max-width: 988px) {
   .not-found__wrapper {
-    gap: 10px;
+    margin: 163px 0 0;
   }
 }
 
 @media screen and (max-width: 520px) {
   .not-found__wrapper {
-    gap: 20px;
+    margin:427px 0 0;   
+    
   }
 
   .not-found__title {
