@@ -141,6 +141,10 @@
     max-width: 319px;
   }
 
+  .about__front {
+  width: 21.2%;
+}
+
   .about__text {
     font-size: 12px;
     line-height: 18px;
@@ -148,6 +152,10 @@
 
   .about__duration {
     margin-top: 93px;
+  }
+
+  .about__title {
+    padding: 1px 0 22px;
   }
 }
 
