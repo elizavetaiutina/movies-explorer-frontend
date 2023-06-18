@@ -165,7 +165,7 @@
   opacity: 0.5;
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 988px) {
   .sign-in__content {
     padding: 232px 0;
   }
