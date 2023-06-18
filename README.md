@@ -8,4 +8,4 @@
 
 # GitHub Pages:
 
-### https://elizavetaiutina.github.io/movies-explorer-frontend/м
+### https://elizavetaiutina.github.io/movies-explorer-frontend/
