@@ -105,11 +105,11 @@
 
 @media screen and (max-width: 988px) {
   .aboutme {
-    padding: 90px 56px 86px;
+    padding: 92px 50px 86px;
   }
 
   .aboutme__info {
-    max-width: 364px;
+    max-width: 360px;
   }
 
   .aboutme__name {
@@ -119,6 +119,10 @@
     margin-bottom: 16px;
   }
 
+  .aboutme__title {
+    padding-bottom: 22px;
+  }
+  
   .aboutme__subtitle {
     font-size: 12px;
     line-height: 18px;
@@ -134,7 +138,7 @@
   }
 
   .aboutme__avatar {
-    max-width: 250px;
+    max-width: 260px;
     max-height: 307px;
   }
 }
