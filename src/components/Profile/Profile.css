@@ -127,9 +127,13 @@
 
 @media screen and (max-width: 988px) {
   .form__button {
-    margin-top: 188px;
+    margin-top: 196px;
   }
 
+  .profile__title {
+    margin: 0 0 77px;
+  }
+  
   .profile {
     padding: 236px 0 269px;
   }
