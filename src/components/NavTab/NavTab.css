@@ -1,4 +1,4 @@
-.nav {
+.navtab {
   display: flex;
   gap: 10px;
 
@@ -6,7 +6,7 @@
   padding: 0;
 }
 
-.nav__link {
+.navtab__link {
   text-decoration: none;
   cursor: pointer;
 
@@ -30,16 +30,16 @@
   transition: opacity 0.2s ease-in-out;
 }
 
-.nav__link:hover {
-  opacity: 0.5;
+.navtab__link:hover {
+  opacity: 0.7;
 }
 
 @media screen and (max-width: 520px) {
-  .nav {
+  .navtab {
     gap: 6px;
   }
 
-  .nav__link {
+  .navtab__link {
     width: 82px;
     height: 26px;
 

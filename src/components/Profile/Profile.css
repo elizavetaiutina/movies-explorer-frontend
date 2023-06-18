@@ -39,7 +39,7 @@
 }
 
 .profile__link-out:hover {
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .form {
@@ -122,7 +122,7 @@
 }
 
 .form__button:hover {
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 988px) {
@@ -133,15 +133,19 @@
   .profile__title {
     margin: 0 0 77px;
   }
-  
+
   .profile {
-    padding: 236px 0 269px;
+    padding: 236px 0 268px;
+  }
+
+  .form__button_type_profile {
+    margin-top: 198px;
   }
 }
 
 @media screen and (max-width: 520px) {
   .profile {
-    padding: 70px 0 40px;
+    padding: 67px 0 40px;
   }
 
   .profile__title {
@@ -163,5 +167,9 @@
     height: 15px;
 
     margin-top: 362px;
+  }
+
+  .form__button_type_profile {
+    margin-top: 365px;
   }
 }

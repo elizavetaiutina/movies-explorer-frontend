@@ -19,11 +19,11 @@ function Navigation() {
   return (
     <>
       {pathname === "/" ? (
-        <nav className="nav">
-          <NavLink to="/signup" className="nav__signup">
+        <nav className="navsign">
+          <NavLink to="/signup" className="navsign__signup">
             Регистрация
           </NavLink>
-          <NavLink to="/signin" className="nav__signin">
+          <NavLink to="/signin" className="navsign__signin">
             Войти
           </NavLink>
         </nav>

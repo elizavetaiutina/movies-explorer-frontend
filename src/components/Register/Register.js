@@ -9,7 +9,7 @@ function Register() {
       <main className="sign-up">
         <div className="sign-up__content">
           <Link to="/" className="sign-up__link">
-            <img src={logo} alt="Логотип- Место" className="logo" />
+            <img src={logo} alt="Логотип" className="logo" />
           </Link>
           <h1 className="sign-up__title">Добро пожаловать!</h1>
           <form name="register" className="form-register form_type_sign-up">

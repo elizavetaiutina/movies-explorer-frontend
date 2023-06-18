@@ -71,11 +71,11 @@
 
   position: absolute;
   top: 14px;
-  right: 52px;
+  right: 31px;
 }
 
 .search-form__button:hover {
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .search__icon {
@@ -93,7 +93,7 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 0 30px;
+  padding: 0px 30px 6px 29px;
   margin: 0;
   height: 40px;
   width: 226px;
@@ -126,7 +126,7 @@
 
   .search__filter {
     gap: 15px;
-    padding: 0 20px;
+    padding: 0px 20px 4px 18px;
     width: 207px;
   }
 }

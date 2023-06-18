@@ -33,7 +33,7 @@ function Profile() {
             required
           />
         </fieldset>
-        <button type="submit" className="form__button">
+        <button type="submit" className="form__button form__button_type_profile">
           Редактировать
         </button>
       </form>

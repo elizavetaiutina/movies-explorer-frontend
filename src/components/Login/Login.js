@@ -9,7 +9,7 @@ function Login({ onLogin }) {
       <main className="sign-in">
         <div className="sign-in__content">
           <Link to="/" className="sign-in__link">
-            <img src={logo} alt="Логотип- Место" className="logo" />
+            <img src={logo} alt="Логотип" className="logo" />
           </Link>
           <h1 className="sign-in__title">Рады видеть!</h1>
           <form name="login" className="form-login form_type_sign-in">

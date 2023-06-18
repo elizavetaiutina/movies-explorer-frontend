@@ -1,4 +1,4 @@
-.nav {
+.navsign {
   display: flex;
   gap: 30px;
   align-items: center;
@@ -8,7 +8,8 @@
   padding: 0;
 }
 
-.nav__signup {
+.navsign__signup {
+  box-sizing: border-box;
   text-decoration: none;
   cursor: pointer;
 
@@ -25,11 +26,12 @@
   transition: opacity 0.2s ease-in-out;
 }
 
-.nav__signup:hover {
-  opacity: 0.5;
+.navsign__signup:hover {
+  opacity: 0.7;
 }
 
-.nav__signin {
+.navsign__signin {
+  box-sizing: border-box;
   text-decoration: none;
   cursor: pointer;
 
@@ -49,8 +51,8 @@
   transition: opacity 0.2s ease-in-out;
 }
 
-.nav__signin:hover {
-  opacity: 0.5;
+.navsign__signin:hover {
+  opacity: 0.7;
 }
 
 .navigation {
@@ -91,7 +93,7 @@
 }
 
 .navigation__link:hover {
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .navigation__link_active {
@@ -124,7 +126,7 @@
 }
 
 .navigation__button:hover {
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .burger {
@@ -133,6 +135,7 @@
 
 @media screen and (max-width: 790px) {
   .burger {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -146,8 +149,8 @@
   .burger__item {
     background: #000000;
     box-sizing: border-box;
-    width: 28px;
-    height: 3px;
+    width: 23px;
+    height: 2px;
 
     margin: 0;
     padding: 0;
@@ -167,22 +170,26 @@
 }
 
 @media screen and (max-width: 520px) {
-  .nav {
-    padding: 18px 14px;
-  }
-
-  .nav__links {
+  .navsign {
+    padding: 0;
     gap: 14px;
   }
 
-  .nav__signup {
+  .navsign__links {
+    gap: 14px;
+  }
+
+  .navsign__signup {
     font-size: 10px;
     margin-bottom: 4px;
   }
 
-  .nav__signin {
+  .navsign__signin {
+    width: 54px;
+    height: 26px;
     font-size: 10px;
 
     padding: 5px 12px;
+    margin: 0 0 4px;
   }
 }

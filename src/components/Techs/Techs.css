@@ -103,6 +103,7 @@
   .techs__text {
     font-size: 12px;
     line-height: 18px;
+    max-width: 450px;
 
     margin-bottom: 82px;
   }
@@ -127,7 +128,7 @@
     line-height: 22px;
 
     margin-bottom: 60px;
-    padding-bottom: 26px;
+    padding-bottom: 28px;
   }
 
   .techs__name {
@@ -145,10 +146,11 @@
   }
 
   .techs__list {
-    justify-content: center;
+    justify-content: flex-start;
     gap: 10px 16.5px;
+    max-width: 185px;
   }
-  
+
   .techs__item {
     width: 84px;
     height: 57px;

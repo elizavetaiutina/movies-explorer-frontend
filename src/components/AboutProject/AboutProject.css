@@ -142,7 +142,7 @@
   }
 
   .about__front {
-  width: 21.2%;
+    width: 21.2%;
   }
 
   .about__text {
@@ -163,11 +163,11 @@
   .about {
     padding: 70px 18px;
   }
-  
+
   .about__front {
     width: 43.5%;
-    }
-  
+  }
+
   .about__title {
     font-size: 18px;
     line-height: 22px;
@@ -182,7 +182,7 @@
   }
 
   .about__wrapper {
-    gap: 16px;
+    gap: 15px;
     width: 284px;
   }
 
