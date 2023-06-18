@@ -1,7 +1,7 @@
 .card {
   box-sizing: border-box;
-  width: 360px;
-  height: 271px;
+  width: 364px;
+  height: 268px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -20,7 +20,7 @@
   box-sizing: border-box;
 
   margin: 0;
-  padding: 14px;
+  padding: 11px;
 }
 
 .card__description {
