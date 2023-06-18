@@ -1,7 +1,7 @@
 .portfolio {
   box-sizing: border-box;
   margin: 0;
-  padding: 0 70px 125px;
+  padding: 0 86px 125px 60px;
 
   display: flex;
   flex-direction: column;
