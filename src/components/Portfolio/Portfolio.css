@@ -76,11 +76,11 @@
 
 @media screen and (max-width: 988px) {
   .portfolio {
-    padding: 0 50px 90px;
+    padding: 0 55px 90px 50px;
   }
 
   .portfolio__title {
-    margin-bottom: 54px;
+    margin: 0 0 54px 6px;
   }
 
   .portfolio__textlink {
