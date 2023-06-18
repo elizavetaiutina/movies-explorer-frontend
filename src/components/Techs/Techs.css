@@ -127,7 +127,7 @@
     line-height: 22px;
 
     margin-bottom: 60px;
-    padding-bottom: 28px;
+    padding-bottom: 26px;
   }
 
   .techs__name {
@@ -144,6 +144,11 @@
     margin-bottom: 50px;
   }
 
+  .techs__list {
+    justify-content: center;
+    gap: 10px 16.5px;
+  }
+  
   .techs__item {
     width: 84px;
     height: 57px;
