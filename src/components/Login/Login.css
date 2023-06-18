@@ -167,13 +167,19 @@
 
 @media screen and (max-width: 520px) {
   .sign-in__content {
+    padding: 232px 0;
+  }
+}
+ 
+@media screen and (max-width: 520px) {
+  .sign-in__content {
     padding: 56px 0 30px;
     width: 260px;
     align-items: center;
   }
 
   .sign-in__title {
-    margin: 50px 0;
+    margin: 47px 0 81px;
   }
 
   .form-login__input_type_error {
@@ -185,7 +191,7 @@
     font-size: 12px;
     line-height: 15px;
     padding: 15px 0;
-    margin: 0 0 14px;
+    margin: 289px 0 14px;
   }
 
   .sign-in__text {
