@@ -6,6 +6,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 18px 70px;
+
+  background: #fafafa;
 }
 
 .header__link {
