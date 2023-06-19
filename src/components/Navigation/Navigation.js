@@ -41,7 +41,7 @@ function Navigation() {
             <NavLink
               to="/saved-movies"
               className={`navigation__link ${
-                pathname === "/movies" ? "navigation__link_active" : ""
+                pathname === "/saved-movies" ? "navigation__link_active" : ""
               }`}
             >
               Сохранённые фильмы

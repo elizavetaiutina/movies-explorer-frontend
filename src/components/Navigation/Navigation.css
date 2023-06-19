@@ -135,6 +135,7 @@
 
 @media screen and (max-width: 790px) {
   .burger {
+    cursor: pointer;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

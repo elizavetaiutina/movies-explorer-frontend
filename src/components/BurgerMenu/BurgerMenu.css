@@ -102,6 +102,11 @@
   opacity: 1;
 }
 
+.menu__link_active:hover {
+  cursor: default;
+  opacity: 1;
+}
+
 .menu__button {
   text-decoration: none;
   cursor: pointer;

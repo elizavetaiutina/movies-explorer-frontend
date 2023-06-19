@@ -60,8 +60,7 @@
   padding: 0;
 }
 
-.card__save-button {
-  background-image: url(../../images/save.svg);
+.card__button {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -77,11 +76,19 @@
   padding: 0;
 }
 
-.card__save-button:hover {
+.card__button:hover {
   opacity: 0.8;
 }
 
-.card__save-button_active {
+.card__button_type_delete {
+  background-image: url(../../images/deletebtn.svg);
+}
+
+.card__button_type_save {
+  background-image: url(../../images/save9.svg);
+}
+
+.card__button_type_save_active {
   background-image: url(../../images/save9.svg);
 }
 
