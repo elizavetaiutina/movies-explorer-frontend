@@ -7,6 +7,7 @@
 .gallery {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 30px 23px;
   box-sizing: border-box;
 
@@ -42,8 +43,8 @@
 
 @media screen and (max-width: 988px) {
   .gallery {
-    gap: 36px 28px;
-    padding: 70px 30px 30px;
+    gap: 36px 38px;
+    padding: 70px 20px 30px;
     max-width: 750px;
   }
 }
