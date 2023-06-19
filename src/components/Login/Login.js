@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Login({ onLogin }) {
   return (
     <>
-      <main className="sign-in">
+      <section className="sign-in">
         <div className="sign-in__content">
           <Link to="/" className="sign-in__link">
             <img src={logo} alt="Логотип" className="logo" />
@@ -20,6 +20,7 @@ function Login({ onLogin }) {
               type="email"
               name="email"
               id="email"
+              placeholder="Введите email"
               className="form-login__input"
               autoComplete="off"
               required
@@ -32,6 +33,7 @@ function Login({ onLogin }) {
               type="password"
               name="password"
               id="password"
+              placeholder="Введите пароль"
               className="form-login__input form-login__input_type_error"
               autoComplete="off"
               required
@@ -50,7 +52,7 @@ function Login({ onLogin }) {
             </Link>
           </p>
         </div>
-      </main>
+      </section>
     </>
   );
 }

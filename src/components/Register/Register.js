@@ -20,6 +20,7 @@ function Register() {
               type="text"
               name="name"
               id="name"
+              placeholder="Введите имя"
               className="form-register__input"
               autoComplete="off"
               required
@@ -32,6 +33,7 @@ function Register() {
               type="email"
               name="email"
               id="email"
+              placeholder="Введите email"
               className="form-register__input"
               autoComplete="off"
               required
@@ -44,6 +46,7 @@ function Register() {
               type="password"
               name="password"
               id="password"
+              placeholder="Введите пароль"
               className="form-register__input form-register__input_type_error"
               autoComplete="off"
               required

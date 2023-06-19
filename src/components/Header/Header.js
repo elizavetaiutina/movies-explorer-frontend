@@ -9,7 +9,7 @@ function Header() {
 
   return (
     <header className={pathname === "/" ? "header" : "header-for-burger"}>
-      <Link to="/movies" className="header__link">
+      <Link to="/" className="header__link">
         <img src={logo} alt="Логотип- Место" className="logo" />
       </Link>
       <Navigation />

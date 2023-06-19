@@ -15,6 +15,7 @@ function Profile() {
             type="text"
             name="name"
             id="name"
+            placeholder="Введите имя"
             className="form__input"
             autoComplete="off"
             required
@@ -28,6 +29,7 @@ function Profile() {
             type="email"
             name="email"
             id="email"
+            placeholder="Введите email"
             className="form__input"
             autoComplete="off"
             required
