@@ -179,6 +179,7 @@
   .about__info {
     flex-direction: column;
     gap: 56px;
+    align-items: center;
   }
 
   .about__wrapper {

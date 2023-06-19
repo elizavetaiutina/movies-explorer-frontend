@@ -151,6 +151,7 @@
   .aboutme__wrapper {
     flex-direction: column;
     gap: 40px;
+    align-items: center;
   }
 
   .aboutme__title {
