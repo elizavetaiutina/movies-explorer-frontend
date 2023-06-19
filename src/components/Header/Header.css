@@ -8,16 +8,6 @@
   padding: 18px 70px;
 }
 
-.header-for-burger {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  box-sizing: border-box;
-  margin: 0;
-  padding: 18px 70px;
-}
-
 .header__link {
   transition: opacity 0.2s ease-in-out;
 }
@@ -27,21 +17,21 @@
 }
 
 @media screen and (max-width: 988px) {
-  .header {
+  .header_page_main {
     padding: 18px 30px;
   }
 
-  .header-for-burger {
+  .header_page_films {
     padding: 17px 38px 18px 30px;
   }
 }
 
 @media screen and (max-width: 520px) {
-  .header {
+  .header_page_main {
     padding: 18px 14px;
   }
 
-  .header-for-burger {
+  .header_page_films {
     padding: 18px 22px 18px 14px;
   }
 }
