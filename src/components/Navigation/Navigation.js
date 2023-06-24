@@ -14,7 +14,6 @@ function Navigation() {
 
   const closeBurgerMenu = () => {
     setIsOpenBurgerMenu(false);
-    console.log("clse");
   };
 
   useEffect(() => {
