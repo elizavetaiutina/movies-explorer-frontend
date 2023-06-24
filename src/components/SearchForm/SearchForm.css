@@ -47,10 +47,14 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 20px;
-  color: #a0a0a0;
+  color: #000000;
 
   margin: 0;
   padding: 20px 63px 25px;
+}
+
+.search-form__input::placeholder {
+  color: #a0a0a0;
 }
 
 .search-form__button {
