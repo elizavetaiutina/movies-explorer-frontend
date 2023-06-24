@@ -18,18 +18,20 @@ import Footer from "../Footer/Footer";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
+import Preloader from "../Preloader/Preloader";
 
 function App() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [loggedIn, setLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
+  const [listSavedMovies, setListSavedMovies] = useState([]);
   const [listMovies, setListMovies] = useState([]);
 
-  const apiUser = new MainApi({
+  const apiMain = new MainApi({
     baseUrl: urlMain,
     headers: {
       authorization: `Bearer ${token}`,
@@ -75,7 +77,7 @@ function App() {
   }, []);*/
   useEffect(() => {
     if (loggedIn) {
-      console.log("проверяем token");
+      /*console.log("проверяем token");*/
       tokenCheck();
     }
   }, [loggedIn]);
@@ -97,16 +99,51 @@ function App() {
 
   useEffect(() => {
     loggedIn &&
-      Promise.all([apiUser.getInfoUser(), apiMovies.getAllMovies()])
-        .then(([user, movies]) => {
+      Promise.all([apiMain.getInfoUser(), apiMain.getSavedMovies(), apiMovies.getAllMovies()])
+        .then(([user, savedMovies, movies]) => {
           setCurrentUser(user);
+          setListSavedMovies(savedMovies);
           setListMovies(movies);
-          console.log(listMovies);
+
+          /* console.log(movies, savedMovies);*/
+
+          setIsLoading(false);
         })
         .catch((err) => {
           console.log(`Ошибка: ${err}.`);
         });
   }, [loggedIn]);
+
+  /* ДОБАВИТЬ ФИЛЬМ В СОХРАНЁННЫЕ */
+  function handleSaveFilm(film) {
+    apiMain
+      .saveNewFilm(film)
+      .then((film) => {
+        setListSavedMovies([film, ...listSavedMovies]);
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}.`);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }
+
+  /* УДАЛИТЬ ФИЛЬМ ИЗ СОХРАНЁННЫХ */
+  function handleUnsaveFilm(film) {
+    setIsLoading(true);
+    apiMain
+      .unSaveNewFilm(film._id)
+      .then((film) => {
+        setListSavedMovies((state) => state.filter((f) => (f._id === film._id ? "" : f)));
+      })
+      .catch((err) => {
+        console.log(`Ошибка: ${err}.`);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }
 
   return (
     <div className="App">
@@ -118,15 +155,25 @@ function App() {
           <Header />
         ) : null}
         <main>
-          <Routes>
-            <Route path="/signup" element={<Register />} />
-            <Route path="/signin" element={<Login />} />
-            <Route path="/" element={<Main />} />
-            <Route path="/movies" element={<Movies movies={listMovies} />} />
-            <Route path="/saved-movies" element={<SavedMovies />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
+          {isLoading ? (
+            <Preloader />
+          ) : (
+            <Routes>
+              <Route path="/signup" element={<Register />} />
+              <Route path="/signin" element={<Login />} />
+              <Route path="/" element={<Main />} />
+              <Route
+                path="/movies"
+                element={<Movies movies={listMovies} onSaveFilm={handleSaveFilm} />}
+              />
+              <Route
+                path="/saved-movies"
+                element={<SavedMovies movies={listSavedMovies} onUnsaveFilm={handleUnsaveFilm} />}
+              />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
+          )}
         </main>
         {pathname === "/" || pathname === "/movies" || pathname === "/saved-movies" ? (
           <Footer />

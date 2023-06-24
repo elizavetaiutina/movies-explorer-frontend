@@ -1,11 +1,22 @@
 import "./MoviesCard.css";
-import img from "../../images/card.jpg";
 
 import { useLocation } from "react-router-dom";
 
-function MoviesCard({ film }) {
+function MoviesCard({ film, onSaveFilm, onUnsaveFilm }) {
   const { pathname } = useLocation();
-  console.log(film);
+  const isSaveButton = pathname === "/movies";
+  const isDeleteButton = pathname === "/saved-movies";
+
+  const imageUrl = film.image.url ? `https://api.nomoreparties.co/${film.image.url}` : film.image;
+
+  function handleSaveClick() {
+    onSaveFilm(film);
+  }
+
+  function handleUnsaveClick() {
+    onUnsaveFilm(film);
+  }
+
   return (
     <li className="card">
       <div className="card__info">
@@ -13,21 +24,24 @@ function MoviesCard({ film }) {
           <h2 className="card__name">{film.nameRU}</h2>
           <p className="card__duration">{`${film.duration} min`}</p>
         </div>
-        <button
-          type="button"
-          className={`card__button ${
-            pathname === "/saved-movies"
-              ? "card__button_type_delete"
-              : "card__button_type_save_active"
-          }`}
-          aria-label="Кнопка"
-        />
+        {isSaveButton && (
+          <button
+            type="button"
+            className="card__button card__button_type_save_active"
+            aria-label="Кнопка сохранить фильм"
+            onClick={handleSaveClick}
+          />
+        )}
+        {isDeleteButton && (
+          <button
+            type="button"
+            className="card__button card__button_type_delete"
+            aria-label="Кнопка сохранить фильм"
+            onClick={handleUnsaveClick}
+          />
+        )}
       </div>
-      <img
-        className="card__image"
-        src={`https://api.nomoreparties.co/${film.image.url}`}
-        alt="Картинка"
-      />
+      <img className="card__image" src={imageUrl} alt="Картинка" />
     </li>
   );
 }
