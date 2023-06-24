@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.7db75b57.css",
-    "main.js": "./static/js/main.70c4f1dd.js",
+    "main.css": "./static/css/main.cc053f12.css",
+    "main.js": "./static/js/main.09174995.js",
     "static/media/Inter-Black.woff?v=3.19": "./static/media/Inter-Black.fd37f7e052bea1018058.woff",
     "static/media/Inter-Medium.woff?v=3.19": "./static/media/Inter-Medium.7ddb89dcdb33dd761944.woff",
     "static/media/Inter-Regular.woff?v=3.19": "./static/media/Inter-Regular.34ed58565339f4f3be40.woff",
@@ -9,20 +9,20 @@
     "static/media/Inter-Medium.woff2?v=3.19": "./static/media/Inter-Medium.6db7e439cc4b0e5c0cd2.woff2",
     "static/media/Inter-Regular.woff2?v=3.19": "./static/media/Inter-Regular.4c96ed73beaf6d1e6cc7.woff2",
     "static/media/avatar.png": "./static/media/avatar.7364f3dce63b5ca64f60.png",
-    "static/media/card.jpg": "./static/media/card.2d08559f7ba1a72be7ae.jpg",
     "static/media/logo.svg": "./static/media/logo.469ea1a4b87c5f3fc2a1e1563b01f972.svg",
     "index.html": "./index.html",
+    "static/media/save.svg": "./static/media/save.b39421801c404f053f9c.svg",
     "static/media/save9.svg": "./static/media/save9.d543f5560fc79150ae3c.svg",
     "static/media/deletebtn.svg": "./static/media/deletebtn.082c57125db05afe7b95.svg",
     "static/media/search.svg": "./static/media/search.c72748355ffb3e0258e3e0228a2512bb.svg",
     "static/media/find.svg": "./static/media/find.ecbb03e26687bce6613d.svg",
     "static/media/close.svg": "./static/media/close.765a7a6bc7642e4cf1d9.svg",
     "static/media/linkarrow.svg": "./static/media/linkarrow.2865e6d76c204dd71e921debcfc647e9.svg",
-    "main.7db75b57.css.map": "./static/css/main.7db75b57.css.map",
-    "main.70c4f1dd.js.map": "./static/js/main.70c4f1dd.js.map"
+    "main.cc053f12.css.map": "./static/css/main.cc053f12.css.map",
+    "main.09174995.js.map": "./static/js/main.09174995.js.map"
   },
   "entrypoints": [
-    "static/css/main.7db75b57.css",
-    "static/js/main.70c4f1dd.js"
+    "static/css/main.cc053f12.css",
+    "static/js/main.09174995.js"
   ]
 }
