@@ -3,14 +3,16 @@ import logo from "../../images/logo.svg";
 
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { useForm } from "../../hooks/useForm";
+import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 
 function Register({ onRegister }) {
-  const { values, handleChange, setValues } = useForm({});
+  /*const { values, handleChange, setValues } = useForm({});*/
+  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation({});
 
+  /*
   const resetForm = () => {
     setValues({ name: "", email: "", password: "" });
-  };
+  };*/
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -78,7 +80,7 @@ function Register({ onRegister }) {
             <span className="password-input-error form-register__span-error">
               Что-то пошло не так...
             </span>
-            <button type="submit" className="form-register__button">
+            <button type="submit" className="form-register__button" disabled={!isValid}>
               Зарегистрироваться
             </button>
           </form>

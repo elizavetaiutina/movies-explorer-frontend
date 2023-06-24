@@ -125,6 +125,13 @@
   opacity: 0.8;
 }
 
+.form__button:disabled {
+  color: #0000007e;
+  opacity: 1;
+
+  cursor: default;
+}
+
 @media screen and (max-width: 988px) {
   .form__button {
     margin-top: 196px;

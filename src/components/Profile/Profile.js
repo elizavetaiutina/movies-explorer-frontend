@@ -2,11 +2,11 @@ import "./Profile.css";
 
 import { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { useForm } from "../../hooks/useForm";
+import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 
 function Profile({ onUpdateUserInfo, onSignOut }) {
-  const { values, handleChange, setValues } = useForm({});
+  const { values, handleChange, errors, isValid, resetForm, setValues } = useFormWithValidation({});
 
   const currentUser = useContext(CurrentUserContext);
   useEffect(() => {
@@ -57,7 +57,11 @@ function Profile({ onUpdateUserInfo, onSignOut }) {
             required
           />
         </fieldset>
-        <button type="submit" className="form__button form__button_type_profile">
+        <button
+          type="submit"
+          className="form__button form__button_type_profile"
+          disabled={!isValid}
+        >
           Редактировать
         </button>
       </form>

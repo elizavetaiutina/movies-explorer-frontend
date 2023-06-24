@@ -126,6 +126,13 @@
   opacity: 0.8;
 }
 
+.form-register__button:disabled {
+  background: #3457f3a9;
+  opacity: 1;
+
+  cursor: default;
+}
+
 .sign-up__text {
   font-family: "Inter";
   font-style: normal;

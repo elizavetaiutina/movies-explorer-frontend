@@ -3,14 +3,10 @@ import logo from "../../images/logo.svg";
 
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { useForm } from "../../hooks/useForm";
+import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 
 function Login({ onLogin }) {
-  const { values, handleChange, setValues } = useForm({});
-
-  const resetForm = () => {
-    setValues({ name: "", email: "", password: "" });
-  };
+  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation({});
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -63,7 +59,7 @@ function Login({ onLogin }) {
             <span className="password-input-error form-login__span-error">
               Что-то пошло не так...
             </span>
-            <button type="submit" className="form-login__button">
+            <button type="submit" className="form-login__button" disabled={!isValid}>
               Войти
             </button>
           </form>

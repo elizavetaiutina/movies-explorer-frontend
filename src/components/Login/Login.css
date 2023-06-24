@@ -130,6 +130,13 @@
   opacity: 0.8;
 }
 
+.form-login__button:disabled {
+  background: #3457f3a9;
+  opacity: 1;
+
+  cursor: default;
+}
+
 .sign-in__text {
   font-family: "Inter";
   font-style: normal;
