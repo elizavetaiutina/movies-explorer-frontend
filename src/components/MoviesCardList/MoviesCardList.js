@@ -2,22 +2,13 @@ import "./MoviesCardList.css";
 
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-function MoviesCardList() {
+function MoviesCardList({ movies }) {
   return (
     <div className="card-list">
       <ul className="gallery">
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
+        {movies.map((film) => {
+          return <MoviesCard key={film.id} film={film} />;
+        })}
       </ul>
       <button className="card-list__button">Ещё</button>
     </div>
