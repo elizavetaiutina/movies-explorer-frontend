@@ -1,7 +1,7 @@
 import "./Navigation.css";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 function Navigation() {
@@ -14,7 +14,32 @@ function Navigation() {
 
   const closeBurgerMenu = () => {
     setIsOpenBurgerMenu(false);
+    console.log("clse");
   };
+
+  useEffect(() => {
+    function closeByEscape(evt) {
+      if (evt.key === "Escape") {
+        closeBurgerMenu();
+      }
+    }
+    function closeByOverlay(evt) {
+      if (evt.target.classList.contains("burger-menu")) {
+        closeBurgerMenu();
+      }
+    }
+
+    if (isOpenBurgerMenu) {
+      // Навешиваем только при открытии
+      document.addEventListener("keydown", closeByEscape);
+      document.addEventListener("mousedown", closeByOverlay);
+      // Удаляем в cleanup функции
+      return () => {
+        document.removeEventListener("keydown", closeByEscape);
+        document.removeEventListener("mousedown", closeByOverlay);
+      };
+    }
+  }, [isOpenBurgerMenu]);
 
   return (
     <>
