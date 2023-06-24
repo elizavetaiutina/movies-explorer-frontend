@@ -25,21 +25,21 @@ class MainApi extends Api {
     });
   }
 
-  saveNewFilm(movie) {
+  saveNewFilm(film) {
     return this._request(`${this._url}/movies`, {
       method: "POST",
       body: JSON.stringify({
-        country: movie.country,
-        director: movie.director,
-        duration: movie.duration,
-        year: movie.year,
-        description: movie.description,
-        image: `https://api.nomoreparties.co/${movie.image.url}`,
-        trailerLink: movie.trailerLink,
-        thumbnail: `https://api.nomoreparties.co/${movie.image.formats.thumbnail.url}`,
-        movieId: movie.id,
-        nameRU: movie.nameRU,
-        nameEN: movie.nameEN,
+        country: film.country,
+        director: film.director,
+        duration: film.duration,
+        year: film.year,
+        description: film.description,
+        image: `https://api.nomoreparties.co/${film.image.url}`,
+        trailerLink: film.trailerLink,
+        thumbnail: `https://api.nomoreparties.co/${film.image.formats.thumbnail.url}`,
+        movieId: film.id,
+        nameRU: film.nameRU,
+        nameEN: film.nameEN,
       }),
       headers: this._headers,
     });

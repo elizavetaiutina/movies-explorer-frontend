@@ -2,7 +2,7 @@ import "./MoviesCardList.css";
 
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-function MoviesCardList({ movies, onSaveFilm, onUnsaveFilm }) {
+function MoviesCardList({ movies, savedMovies, onSaveFilm, onUnsaveFilm }) {
   return (
     <div className="card-list">
       <ul className="gallery">
@@ -11,6 +11,7 @@ function MoviesCardList({ movies, onSaveFilm, onUnsaveFilm }) {
             <MoviesCard
               key={film.id || film._id}
               film={film}
+              savedMovies={savedMovies}
               onSaveFilm={onSaveFilm}
               onUnsaveFilm={onUnsaveFilm}
             />

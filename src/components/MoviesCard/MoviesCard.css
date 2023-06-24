@@ -85,7 +85,13 @@
 }
 
 .card__button_type_save {
+  background-image: url(../../images/save.svg);
+  transition: all 0.2s ease-in-out;
+}
+
+.card__button_type_save:hover {
   background-image: url(../../images/save9.svg);
+  opacity: 0.6;
 }
 
 .card__button_type_save_active {

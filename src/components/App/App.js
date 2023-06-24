@@ -115,23 +115,28 @@ function App() {
   }, [loggedIn]);
 
   /* ДОБАВИТЬ ФИЛЬМ В СОХРАНЁННЫЕ */
-  function handleSaveFilm(film) {
-    apiMain
-      .saveNewFilm(film)
-      .then((film) => {
-        setListSavedMovies([film, ...listSavedMovies]);
-      })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}.`);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+  function handleSaveFilm(film, isSavedFilm, infoSaveFilm) {
+    console.log(film, isSavedFilm, infoSaveFilm);
+
+    if (isSavedFilm) {
+      handleUnsaveFilm(infoSaveFilm);
+    } else {
+      apiMain
+        .saveNewFilm(film)
+        .then((film) => {
+          setListSavedMovies([film, ...listSavedMovies]);
+        })
+        .catch((err) => {
+          console.log(`Ошибка: ${err}.`);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
   }
 
   /* УДАЛИТЬ ФИЛЬМ ИЗ СОХРАНЁННЫХ */
   function handleUnsaveFilm(film) {
-    setIsLoading(true);
     apiMain
       .unSaveNewFilm(film._id)
       .then((film) => {
@@ -139,9 +144,6 @@ function App() {
       })
       .catch((err) => {
         console.log(`Ошибка: ${err}.`);
-      })
-      .finally(() => {
-        setIsLoading(false);
       });
   }
 
@@ -164,7 +166,13 @@ function App() {
               <Route path="/" element={<Main />} />
               <Route
                 path="/movies"
-                element={<Movies movies={listMovies} onSaveFilm={handleSaveFilm} />}
+                element={
+                  <Movies
+                    movies={listMovies}
+                    savedMovies={listSavedMovies}
+                    onSaveFilm={handleSaveFilm}
+                  />
+                }
               />
               <Route
                 path="/saved-movies"

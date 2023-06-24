@@ -3,11 +3,11 @@ import "./Movies.css";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
-function Movies({ movies, onSaveFilm }) {
+function Movies({ movies, savedMovies, onSaveFilm }) {
   return (
     <section className="movies">
       <SearchForm />
-      <MoviesCardList movies={movies} onSaveFilm={onSaveFilm} />
+      <MoviesCardList movies={movies} savedMovies={savedMovies} onSaveFilm={onSaveFilm} />
     </section>
   );
 }
