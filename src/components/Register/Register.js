@@ -2,8 +2,26 @@ import "./Register.css";
 import logo from "../../images/logo.svg";
 
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useForm } from "../../hooks/useForm";
 
-function Register() {
+function Register({ onRegister }) {
+  const { values, handleChange, setValues } = useForm({});
+
+  const resetForm = () => {
+    setValues({ name: "", email: "", password: "" });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    onRegister(values.email, values.name, values.password);
+  };
+
+  useEffect(() => {
+    resetForm();
+  }, []);
+
   return (
     <>
       <main className="sign-up">
@@ -12,7 +30,7 @@ function Register() {
             <img src={logo} alt="Логотип" className="logo" />
           </Link>
           <h1 className="sign-up__title">Добро пожаловать!</h1>
-          <form name="register" className="form-register form_type_sign-up">
+          <form name="register" className="form-register form_type_sign-up" onSubmit={handleSubmit}>
             <label className="form-register__label" htmlFor="name">
               Имя
             </label>
@@ -23,6 +41,8 @@ function Register() {
               placeholder="Введите имя"
               className="form-register__input"
               autoComplete="off"
+              value={values.name || ""}
+              onChange={handleChange}
               required
             />
             <span className="name-input-error form-register__span-error"></span>
@@ -36,6 +56,8 @@ function Register() {
               placeholder="Введите email"
               className="form-register__input"
               autoComplete="off"
+              value={values.email || ""}
+              onChange={handleChange}
               required
             />
             <span className="email-input-error form-register__span-error"></span>
@@ -49,6 +71,8 @@ function Register() {
               placeholder="Введите пароль"
               className="form-register__input form-register__input_type_error"
               autoComplete="off"
+              value={values.password || ""}
+              onChange={handleChange}
               required
             />
             <span className="password-input-error form-register__span-error">

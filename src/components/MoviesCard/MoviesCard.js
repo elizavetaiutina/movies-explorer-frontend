@@ -9,7 +9,7 @@ function MoviesCard({ film, savedMovies, onSaveFilm, onUnsaveFilm }) {
 
   const imageUrl = film.image.url ? `https://api.nomoreparties.co/${film.image.url}` : film.image;
   const isSavedFilm = savedMovies ? savedMovies.some((i) => i.movieId === film.id) : false;
-  const infoSaveFilm = savedMovies ? savedMovies.find((i) => i.movieId === film.id) : false;
+  const infoSaveFilm = savedMovies ? savedMovies.find((i) => i.movieId === film.id) : null;
 
   function handleSaveClick() {
     onSaveFilm(film, isSavedFilm, infoSaveFilm);
@@ -45,7 +45,9 @@ function MoviesCard({ film, savedMovies, onSaveFilm, onUnsaveFilm }) {
           />
         )}
       </div>
-      <img className="card__image" src={imageUrl} alt="Картинка" />
+      <a className="card__link-image" href={film.trailerLink} target="_blank">
+        <img className="card__image" src={imageUrl} alt="Картинка" />
+      </a>
     </li>
   );
 }

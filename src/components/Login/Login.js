@@ -2,8 +2,26 @@ import "./Login.css";
 import logo from "../../images/logo.svg";
 
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useForm } from "../../hooks/useForm";
 
 function Login({ onLogin }) {
+  const { values, handleChange, setValues } = useForm({});
+
+  const resetForm = () => {
+    setValues({ name: "", email: "", password: "" });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    onLogin(values.password, values.email);
+  };
+
+  useEffect(() => {
+    resetForm();
+  }, []);
+
   return (
     <>
       <section className="sign-in">
@@ -12,7 +30,7 @@ function Login({ onLogin }) {
             <img src={logo} alt="Логотип" className="logo" />
           </Link>
           <h1 className="sign-in__title">Рады видеть!</h1>
-          <form name="login" className="form-login form_type_sign-in">
+          <form name="login" className="form-login form_type_sign-in" onSubmit={handleSubmit}>
             <label className="form-login__label" htmlFor="name">
               E-mail
             </label>
@@ -23,6 +41,8 @@ function Login({ onLogin }) {
               placeholder="Введите email"
               className="form-login__input"
               autoComplete="off"
+              value={values.email || ""}
+              onChange={handleChange}
               required
             />
             <span className="email-input-error form-login__span-error"></span>
@@ -36,6 +56,8 @@ function Login({ onLogin }) {
               placeholder="Введите пароль"
               className="form-login__input form-login__input_type_error"
               autoComplete="off"
+              value={values.password || ""}
+              onChange={handleChange}
               required
             />
             <span className="password-input-error form-login__span-error">

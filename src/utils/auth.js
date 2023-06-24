@@ -14,13 +14,13 @@ class Auth {
     });
   }
 
-  register(password, email) {
+  register(email, name, password) {
     return this._request(`${this._url}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ password: `${password}`, email: `${email}` }),
+      body: JSON.stringify({ password: `${password}`, email: `${email}`, name: `${name}` }),
     });
   }
 
