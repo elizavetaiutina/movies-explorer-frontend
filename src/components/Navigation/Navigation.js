@@ -4,7 +4,7 @@ import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
-function Navigation() {
+function Navigation({ isLogged }) {
   const { pathname } = useLocation();
   const [isOpenBurgerMenu, setIsOpenBurgerMenu] = useState(false);
 
@@ -42,16 +42,7 @@ function Navigation() {
 
   return (
     <>
-      {pathname === "/" ? (
-        <nav className="navsign">
-          <NavLink to="/signup" className="navsign__signup">
-            Регистрация
-          </NavLink>
-          <NavLink to="/signin" className="navsign__signin">
-            Войти
-          </NavLink>
-        </nav>
-      ) : (
+      {isLogged ? (
         <nav className="navigation">
           <div className="navigation__links">
             <NavLink
@@ -83,6 +74,15 @@ function Navigation() {
               <li className="burger__item" />
             </ul>
           )}
+        </nav>
+      ) : (
+        <nav className="navsign">
+          <NavLink to="/signup" className="navsign__signup">
+            Регистрация
+          </NavLink>
+          <NavLink to="/signin" className="navsign__signin">
+            Войти
+          </NavLink>
         </nav>
       )}
     </>

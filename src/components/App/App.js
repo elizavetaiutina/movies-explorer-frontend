@@ -202,7 +202,7 @@ function App() {
         pathname === "/movies" ||
         pathname === "/saved-movies" ||
         pathname === "/profile" ? (
-          <Header />
+          <Header isLogged={loggedIn} />
         ) : null}
         <main>
           {isLoading ? (

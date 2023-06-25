@@ -50,15 +50,13 @@ function Login({ onLogin }) {
               name="password"
               id="password"
               placeholder="Введите пароль"
-              className="form-login__input form-login__input_type_error"
+              className="form-login__input"
               autoComplete="off"
               value={values.password || ""}
               onChange={handleChange}
               required
             />
-            <span className="password-input-error form-login__span-error">
-              Что-то пошло не так...
-            </span>
+            <span className="password-input-error form-login__span-error"></span>
             <button type="submit" className="form-login__button" disabled={!isValid}>
               Войти
             </button>

@@ -4,7 +4,7 @@ import Navigation from "../Navigation/Navigation";
 
 import { Link, useLocation } from "react-router-dom";
 
-function Header() {
+function Header({ isLogged }) {
   const { pathname } = useLocation();
 
   return (
@@ -12,7 +12,7 @@ function Header() {
       <Link to="/" className="header__link">
         <img src={logo} alt="Логотип- Место" className="logo" />
       </Link>
-      <Navigation />
+      <Navigation isLogged={isLogged} />
     </header>
   );
 }

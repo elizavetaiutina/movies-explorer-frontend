@@ -71,15 +71,13 @@ function Register({ onRegister }) {
               name="password"
               id="password"
               placeholder="Введите пароль"
-              className="form-register__input form-register__input_type_error"
+              className="form-register__input"
               autoComplete="off"
               value={values.password || ""}
               onChange={handleChange}
               required
             />
-            <span className="password-input-error form-register__span-error">
-              Что-то пошло не так...
-            </span>
+            <span className="password-input-error form-register__span-error"></span>
             <button type="submit" className="form-register__button" disabled={!isValid}>
               Зарегистрироваться
             </button>
