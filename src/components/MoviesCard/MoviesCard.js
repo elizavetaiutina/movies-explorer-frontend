@@ -1,4 +1,5 @@
 import "./MoviesCard.css";
+import { converterOfMinutesToHours } from "../../utils/time.js";
 
 import { useLocation } from "react-router-dom";
 
@@ -24,7 +25,7 @@ function MoviesCard({ film, savedMovies, onSaveFilm, onUnsaveFilm }) {
       <div className="card__info">
         <div className="card__description">
           <h2 className="card__name">{film.nameRU}</h2>
-          <p className="card__duration">{`${film.duration} min`}</p>
+          <p className="card__duration">{converterOfMinutesToHours(film.duration)}</p>
         </div>
         {isSaveButton && (
           <button
