@@ -5,21 +5,32 @@ import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import { useEffect } from "react";
 import { useForm } from "../../hooks/useForm";
 
-function SearchForm() {
+function SearchForm({ valueSearch, setValueSearch }) {
   const { values, handleChange, setValues } = useForm({});
 
   const resetForm = () => {
     setValues({ name: "", email: "", password: "" });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("поиск");
-  };
-
   useEffect(() => {
     resetForm();
   }, []);
+
+  useEffect(() => {
+    // console.log(values.search);
+    // setValueSearch(values.search);
+  }, [values]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (!values.search) {
+      console.log("Введите название фильма !!");
+      return;
+    } else {
+      setValueSearch(values.search);
+    }
+  };
 
   return (
     <div className="search">

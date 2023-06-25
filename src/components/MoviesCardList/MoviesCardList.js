@@ -3,6 +3,8 @@ import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 function MoviesCardList({ movies, savedMovies, onSaveFilm, onUnsaveFilm }) {
+  // console.log("movies", movies);
+
   return (
     <div className="card-list">
       <ul className="gallery">
