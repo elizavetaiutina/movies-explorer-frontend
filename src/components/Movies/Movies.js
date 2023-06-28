@@ -3,6 +3,7 @@ import "./Movies.css";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
+import { durationForFilter } from "../../utils/constants";
 
 import { useState, useEffect } from "react";
 
@@ -13,25 +14,50 @@ function Movies({ movies, savedMovies, onSaveFilm }) {
 
   const [arrSearch, setArrSearch] = useState([]);
 
-  /* ПОИСК */
-  function handleSearch() {
-    setIsLoading(true);
-    setTimeout(() => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  /* ЧЕКБОКС */
+  function handleCheck() {
+    setIsChecked(!isChecked);
+  }
+
+  /* ПОИСК С ФИЛЬТРОМ */
+  function filteredMovies() {
+    if (!isChecked && !valueSearch) {
+      console.log("фильтр не сделан и значения нет");
+    }
+
+    /* ФИЛЬТР ВКЛЮЧЕН*/
+    if (isChecked && valueSearch) {
+      const filterMovies = movies.filter((item) => {
+        return (
+          item.nameRU.toLowerCase().includes(valueSearch.toLowerCase()) &&
+          item.duration <= durationForFilter
+        );
+      });
+
+      setArrSearch(filterMovies);
+    }
+
+    /* ФИЛЬТР ВЫКЛЮЧЕН*/
+    if (isChecked && valueSearch) {
       const newmovies = movies.filter((item) => {
         return item.nameRU.toLowerCase().includes(valueSearch.toLowerCase());
       });
-      setArrSearch(newmovies);
-      setIsLoading(false);
-    }, 500);
-  }
 
-  useEffect(() => {
-    handleSearch();
-  }, [valueSearch]);
+      setArrSearch(newmovies);
+    }
+  }
 
   return (
     <section className="movies">
-      <SearchForm valueSearch={valueSearch} setValueSearch={setValueSearch} />
+      <SearchForm
+        valueSearch={valueSearch}
+        setValueSearch={setValueSearch}
+        isChecked={isChecked}
+        handleCheck={handleCheck}
+        filteredMovies={filteredMovies}
+      />
       {isLoading ? (
         <Preloader />
       ) : arrSearch.length ? (

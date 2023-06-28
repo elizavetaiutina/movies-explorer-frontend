@@ -5,7 +5,7 @@ import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import { useEffect } from "react";
 import { useForm } from "../../hooks/useForm";
 
-function SearchForm({ valueSearch, setValueSearch }) {
+function SearchForm({ valueSearch, setValueSearch, isChecked, handleCheck, filteredMovies }) {
   const { values, handleChange, setValues } = useForm({});
 
   const resetForm = () => {
@@ -18,12 +18,13 @@ function SearchForm({ valueSearch, setValueSearch }) {
 
   useEffect(() => {
     // console.log(values.search);
-    // setValueSearch(values.search);
+    setValueSearch(values.search);
   }, [values]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    filteredMovies();
     if (!values.search) {
       console.log("Введите название фильма !!");
       return;
@@ -50,7 +51,7 @@ function SearchForm({ valueSearch, setValueSearch }) {
         </form>
         <img className="search__icon" src={searchicon} alt="Искать" />
         <div className="search__filter">
-          <FilterCheckbox />
+          <FilterCheckbox isChecked={isChecked} handleCheck={handleCheck} />
           <p className="search__text">Короткометражки</p>
         </div>
       </div>

@@ -3,6 +3,7 @@ import "./SavedMovies.css";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
+import { durationForFilter } from "../../utils/constants";
 
 import { useState, useEffect } from "react";
 
@@ -13,33 +14,58 @@ function SavedMovies({ movies, onUnsaveFilm }) {
 
   const [arrSearchInSave, setArrSearchInSave] = useState([]);
 
-  /* ПОИСК */
-  function handleSearch() {
-    const newmovies = movies.filter((item) => {
-      return item.nameRU.toLowerCase().includes(valueSearch.toLowerCase());
-    });
-    setArrSearchInSave(newmovies);
+  const [isChecked, setIsChecked] = useState(false);
+
+  /* ЧЕКБОКС */
+  function handleCheck() {
+    setIsChecked(!isChecked);
   }
 
-  /* ПОИСК */
-  function handleSearch() {
+  /* ПОИСК С ФИЛЬТРОМ */
+  function filteredMovies() {
     setIsLoading(true);
+
     setTimeout(() => {
-      const newmovies = movies.filter((item) => {
-        return item.nameRU.toLowerCase().includes(valueSearch.toLowerCase());
-      });
-      setArrSearchInSave(newmovies);
+      /*
+      if (!isChecked && !valueSearch) {
+        console.log("фильтр не сделан и значения нет");
+      }*/
+
+      /* ФИЛЬТР ВКЛЮЧЕН*/
+      if (isChecked) {
+        const filterMovies = movies.filter((item) => {
+          return (
+            item.nameRU.toLowerCase().includes(valueSearch.toLowerCase()) &&
+            item.duration <= durationForFilter
+          );
+        });
+
+        setArrSearchInSave(filterMovies);
+      } else {
+        const newmovies = movies.filter((item) => {
+          return item.nameRU.toLowerCase().includes(valueSearch.toLowerCase());
+        });
+
+        setArrSearchInSave(newmovies);
+      }
+
       setIsLoading(false);
     }, 500);
   }
 
   useEffect(() => {
-    handleSearch();
-  }, [valueSearch]);
+    filteredMovies();
+  }, []);
 
   return (
     <section className="movies">
-      <SearchForm valueSearch={valueSearch} setValueSearch={setValueSearch} />
+      <SearchForm
+        valueSearch={valueSearch}
+        setValueSearch={setValueSearch}
+        isChecked={isChecked}
+        handleCheck={handleCheck}
+        filteredMovies={filteredMovies}
+      />
       {isLoading ? (
         <Preloader />
       ) : arrSearchInSave.length ? (
