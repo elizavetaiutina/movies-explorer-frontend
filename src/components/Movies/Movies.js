@@ -15,6 +15,27 @@ function Movies({ movies, savedMovies, onSaveFilm }) {
   const [arrSearch, setArrSearch] = useState([]);
 
   const [isChecked, setIsChecked] = useState(false);
+  const error = false;
+  /* localStorage */
+  /*текст запроса, найденные фильмы и состояние переключателя короткометражек сохраняются в хранилище*/
+  const filterMovies = JSON.parse(localStorage.getItem("filteredMovies"));
+  const textQueryForSearch = localStorage.getItem("queryForSearch");
+  const stateCheckBox = JSON.parse(localStorage.getItem("stateCheckBox"));
+  /* console.log("filterMovies", filterMovies);
+  console.log("textQueryForSearch", textQueryForSearch);
+  console.log("stateCheckBox", stateCheckBox);*/
+
+  useEffect(() => {
+    if (textQueryForSearch) {
+      setValueSearch(textQueryForSearch);
+    }
+    if (stateCheckBox) {
+      setIsChecked(stateCheckBox);
+    }
+    if (filterMovies) {
+      setArrSearch(filterMovies);
+    }
+  }, []);
 
   /* ЧЕКБОКС */
   function handleCheck() {
@@ -23,31 +44,51 @@ function Movies({ movies, savedMovies, onSaveFilm }) {
 
   /* ПОИСК С ФИЛЬТРОМ */
   function filteredMovies() {
-    if (!isChecked && !valueSearch) {
-      console.log("фильтр не сделан и значения нет");
-    }
+    // заисываем в localStorage текст запроса и состояние чек-бокса
+    localStorage.setItem("queryForSearch", valueSearch);
+    localStorage.setItem("stateCheckBox", JSON.stringify(isChecked));
 
-    /* ФИЛЬТР ВКЛЮЧЕН*/
-    if (isChecked && valueSearch) {
-      const filterMovies = movies.filter((item) => {
-        return (
-          item.nameRU.toLowerCase().includes(valueSearch.toLowerCase()) &&
-          item.duration <= durationForFilter
-        );
-      });
+    setIsLoading(true);
 
-      setArrSearch(filterMovies);
-    }
+    setTimeout(() => {
+      if (!isChecked && !valueSearch) {
+        console.log("фильтр не сделан и значения нет");
+      }
 
-    /* ФИЛЬТР ВЫКЛЮЧЕН*/
-    if (isChecked && valueSearch) {
-      const newmovies = movies.filter((item) => {
-        return item.nameRU.toLowerCase().includes(valueSearch.toLowerCase());
-      });
+      /* ФИЛЬТР ВКЛЮЧЕН*/
+      if (isChecked && valueSearch) {
+        const moviesAfterSearchWithFilter = movies.filter((item) => {
+          return (
+            item.nameRU.toLowerCase().includes(valueSearch.toLowerCase()) &&
+            item.duration <= durationForFilter
+          );
+        });
 
-      setArrSearch(newmovies);
-    }
+        setArrSearch(moviesAfterSearchWithFilter);
+
+        //записываем в localStorage найденные фильмы
+        localStorage.setItem("filteredMovies", JSON.stringify(moviesAfterSearchWithFilter));
+      } else if (!isChecked && valueSearch) {
+        /* ФИЛЬТР ВЫКЛЮЧЕН*/
+        const moviesAfterSearch = movies.filter((item) => {
+          return item.nameRU.toLowerCase().includes(valueSearch.toLowerCase());
+        });
+
+        setArrSearch(moviesAfterSearch);
+
+        //записываем в localStorage найденные фильмы
+        localStorage.setItem("filteredMovies", JSON.stringify(moviesAfterSearch));
+      } else setArrSearch(movies);
+      setIsLoading(false);
+    }, 500);
   }
+
+  /*
+  function handleResetLocalStorage() {
+    localStorage.removeItem("filteredMovies");
+    localStorage.removeItem("queryForSearch");
+    localStorage.removeItem("stateCheckBox");
+  }*/
 
   return (
     <section className="movies">
@@ -58,6 +99,14 @@ function Movies({ movies, savedMovies, onSaveFilm }) {
         handleCheck={handleCheck}
         filteredMovies={filteredMovies}
       />
+      {error && arrSearch.length === 0 ? (
+        <p className="movies__text">
+          Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен.
+          Подождите немного и попробуйте ещё раз
+        </p>
+      ) : (
+        ""
+      )}
       {isLoading ? (
         <Preloader />
       ) : arrSearch.length ? (
