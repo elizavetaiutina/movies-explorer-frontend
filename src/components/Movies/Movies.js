@@ -26,15 +26,20 @@ function Movies({ movies, savedMovies, onSaveFilm }) {
   console.log("stateCheckBox", stateCheckBox);*/
 
   useEffect(() => {
-    if (textQueryForSearch) {
-      setValueSearch(textQueryForSearch);
-    }
-    if (stateCheckBox) {
-      setIsChecked(stateCheckBox);
-    }
-    if (filterMovies) {
-      setArrSearch(filterMovies);
-    }
+    setIsLoading(true);
+
+    setTimeout(() => {
+      if (textQueryForSearch) {
+        setValueSearch(textQueryForSearch);
+      }
+      if (stateCheckBox) {
+        setIsChecked(stateCheckBox);
+      }
+      if (filterMovies) {
+        setArrSearch(filterMovies);
+      }
+      setIsLoading(false);
+    }, 500);
   }, []);
 
   /* ЧЕКБОКС */
@@ -44,11 +49,12 @@ function Movies({ movies, savedMovies, onSaveFilm }) {
 
   /* ПОИСК С ФИЛЬТРОМ */
   function filteredMovies() {
+    if (!arrSearch.length) {
+      setIsLoading(true);
+    }
     // заисываем в localStorage текст запроса и состояние чек-бокса
     localStorage.setItem("queryForSearch", valueSearch);
     localStorage.setItem("stateCheckBox", JSON.stringify(isChecked));
-
-    setIsLoading(true);
 
     setTimeout(() => {
       if (!isChecked && !valueSearch) {
