@@ -41,25 +41,6 @@ function App() {
     },
   });
 
-  /* Получаем фильмы с сервиса beatfilm-movies
-  useEffect(() => {
-    apiMovies
-      .getAllMovies()
-      .then((movies) => {
-        setListMovies(movies);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => setIsLoading(false));
-  }, []);*/
-
-  /*
-  apiUser.getInfoUser().then((user) => {
-    console.log(user);
-    setCurrentUser(user);
-  });*/
-
   const apiMovies = new MoviesApi({
     baseUrl: urlMovies,
     headers: {
@@ -97,8 +78,7 @@ function App() {
           setCurrentUser(user);
           setListMovies(movies);
 
-          /* console.log(movies, savedMovies);*/
-          /*console.log("user movies", user, movies);*/
+          /* console.log(user,movies, savedMovies);*/
         })
         .catch((err) => {
           console.log(`Ошибка: ${err}.`);

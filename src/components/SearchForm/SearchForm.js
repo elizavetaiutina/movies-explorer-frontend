@@ -16,7 +16,6 @@ function SearchForm({ valueSearch, setValueSearch, isChecked, handleCheck, filte
 
     filteredMovies();
     if (!valueSearch) {
-      console.log("blya");
       setTextError("Введите название фильма");
       return;
     } else {

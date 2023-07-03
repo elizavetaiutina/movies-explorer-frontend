@@ -50,9 +50,6 @@ function Movies({ movies, savedMovies, onSaveFilm, onUnsaveFilm }) {
 
   /* ПОИСК С ФИЛЬТРОМ */
   function filteredMovies() {
-    if (!arrSearch.length) {
-      setIsLoading(true);
-    }
     // заисываем в localStorage текст запроса и состояние чек-бокса
     localStorage.setItem("queryForSearch", valueSearch);
     localStorage.setItem("stateCheckBox", JSON.stringify(isChecked));
@@ -79,7 +76,6 @@ function Movies({ movies, savedMovies, onSaveFilm, onUnsaveFilm }) {
         const moviesAfterSearch = movies.filter((item) => {
           return item.nameRU.toLowerCase().includes(valueSearch.toLowerCase());
         });
-        console.log("moviesAfterSearch", moviesAfterSearch);
         setArrSearch(moviesAfterSearch);
 
         //записываем в localStorage найденные фильмы
