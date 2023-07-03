@@ -60,13 +60,15 @@ function App() {
           navigate("/movies", { replace: true });
         })
         .catch((err) => {
-          console.log(err);
+          console.log(`Ошибка: ${err}.`);
           onSignOut();
+          // localStorage.removeItem("token");
         })
         .finally(() => setIsLoading(false));
     } else {
       setIsLoading(false);
     }
+    setIsLoading(false);
   }, [loggedIn]);
 
   useEffect(() => {
@@ -84,6 +86,8 @@ function App() {
           console.log(`Ошибка: ${err}.`);
         })
         .finally(() => setIsLoading(false));
+
+    setIsLoading(false);
   }, [loggedIn]);
 
   useEffect(() => {
@@ -193,6 +197,7 @@ function App() {
 
   /* ВЫХОД ИЗ АККАУНТА ПОЛЬЗОВАТЕЛЯ */
   const onSignOut = () => {
+    console.log("Выходим !");
     localStorage.removeItem("token");
     setLoggedIn(false);
     navigate("/", { replace: true });
