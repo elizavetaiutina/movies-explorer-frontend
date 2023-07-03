@@ -62,18 +62,14 @@ function App() {
         .catch((err) => {
           console.log(`Ошибка: ${err}.`);
           onSignOut();
-          // localStorage.removeItem("token");
         })
         .finally(() => setIsLoading(false));
     } else {
       setIsLoading(false);
     }
-    setIsLoading(false);
   }, [loggedIn]);
 
   useEffect(() => {
-    setIsLoading(true);
-
     loggedIn &&
       Promise.all([apiMain.getInfoUser(), apiMovies.getAllMovies()])
         .then(([user, movies]) => {
@@ -86,8 +82,6 @@ function App() {
           console.log(`Ошибка: ${err}.`);
         })
         .finally(() => setIsLoading(false));
-
-    setIsLoading(false);
   }, [loggedIn]);
 
   useEffect(() => {
@@ -198,9 +192,13 @@ function App() {
   /* ВЫХОД ИЗ АККАУНТА ПОЛЬЗОВАТЕЛЯ */
   const onSignOut = () => {
     console.log("Выходим !");
-    localStorage.removeItem("token");
     setLoggedIn(false);
     navigate("/", { replace: true });
+
+    localStorage.removeItem("token");
+    localStorage.removeItem("filteredMovies");
+    localStorage.removeItem("queryForSearch");
+    localStorage.removeItem("stateCheckBox");
   };
 
   return (
