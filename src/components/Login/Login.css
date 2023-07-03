@@ -80,7 +80,7 @@
 
 .form-login__span-error {
   box-sizing: border-box;
-  min-height: 15px;
+  min-height: 30px;
   width: 100%;
   margin: 6px 0 2px;
   padding: 0;
@@ -130,11 +130,12 @@
   opacity: 0.8;
 }
 
-.form-login__button:disabled {
+.form-login__button_disabled {
   background: #3457f3a9;
   opacity: 1;
 
   cursor: default;
+  pointer-events: none;
 }
 
 .sign-in__text {

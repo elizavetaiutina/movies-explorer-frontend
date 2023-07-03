@@ -7,7 +7,7 @@ import { durationForFilter } from "../../utils/constants";
 
 import { useState, useEffect } from "react";
 
-function Movies({ movies, savedMovies, onSaveFilm }) {
+function Movies({ movies, savedMovies, onSaveFilm, onUnsaveFilm }) {
   const [isLoading, setIsLoading] = useState(false);
 
   const [valueSearch, setValueSearch] = useState("");
@@ -16,6 +16,7 @@ function Movies({ movies, savedMovies, onSaveFilm }) {
 
   const [isChecked, setIsChecked] = useState(false);
   const error = false;
+
   /* localStorage */
   /*текст запроса, найденные фильмы и состояние переключателя короткометражек сохраняются в хранилище*/
   const filterMovies = JSON.parse(localStorage.getItem("filteredMovies"));
@@ -69,7 +70,6 @@ function Movies({ movies, savedMovies, onSaveFilm }) {
             item.duration <= durationForFilter
           );
         });
-
         setArrSearch(moviesAfterSearchWithFilter);
 
         //записываем в localStorage найденные фильмы
@@ -79,7 +79,7 @@ function Movies({ movies, savedMovies, onSaveFilm }) {
         const moviesAfterSearch = movies.filter((item) => {
           return item.nameRU.toLowerCase().includes(valueSearch.toLowerCase());
         });
-
+        console.log("moviesAfterSearch", moviesAfterSearch);
         setArrSearch(moviesAfterSearch);
 
         //записываем в localStorage найденные фильмы
@@ -116,7 +116,12 @@ function Movies({ movies, savedMovies, onSaveFilm }) {
       {isLoading ? (
         <Preloader />
       ) : arrSearch.length ? (
-        <MoviesCardList movies={arrSearch} savedMovies={savedMovies} onSaveFilm={onSaveFilm} />
+        <MoviesCardList
+          movies={arrSearch}
+          savedMovies={savedMovies}
+          onSaveFilm={onSaveFilm}
+          onUnsaveFilm={onUnsaveFilm}
+        />
       ) : (
         <p className="movies__text">Ничего не найдено</p>
       )}

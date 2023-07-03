@@ -6,13 +6,7 @@ import { useEffect } from "react";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 
 function Register({ onRegister }) {
-  /*const { values, handleChange, setValues } = useForm({});*/
   const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation({});
-
-  /*
-  const resetForm = () => {
-    setValues({ name: "", email: "", password: "" });
-  };*/
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -47,7 +41,7 @@ function Register({ onRegister }) {
               onChange={handleChange}
               required
             />
-            <span className="name-input-error form-register__span-error"></span>
+            <span className="name-input-error form-register__span-error">{errors.name}</span>
             <label className="form-register__label" htmlFor="email">
               E-mail
             </label>
@@ -62,7 +56,7 @@ function Register({ onRegister }) {
               onChange={handleChange}
               required
             />
-            <span className="email-input-error form-register__span-error"></span>
+            <span className="email-input-error form-register__span-error">{errors.email}</span>
             <label className="form-register__label" htmlFor="password">
               Пароль
             </label>
@@ -77,8 +71,15 @@ function Register({ onRegister }) {
               onChange={handleChange}
               required
             />
-            <span className="password-input-error form-register__span-error"></span>
-            <button type="submit" className="form-register__button" disabled={!isValid}>
+            <span className="password-input-error form-register__span-error">
+              {errors.password}
+            </span>
+            <button
+              type="submit"
+              className={`form-register__button ${
+                !isValid ? "form-register__button_disabled" : ""
+              }`}
+            >
               Зарегистрироваться
             </button>
           </form>

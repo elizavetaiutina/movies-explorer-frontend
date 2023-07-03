@@ -6,7 +6,7 @@ import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 
 function Profile({ onUpdateUserInfo, onSignOut }) {
-  const { values, handleChange, errors, isValid, resetForm, setValues } = useFormWithValidation({});
+  const { values, handleChange, errors, isValid, setValues } = useFormWithValidation({});
 
   const currentUser = useContext(CurrentUserContext);
   useEffect(() => {
@@ -41,6 +41,7 @@ function Profile({ onUpdateUserInfo, onSignOut }) {
             required
           />
         </fieldset>
+        <span className="profile__span-error">{errors.name}</span>
         <fieldset className="form__wrapper">
           <label className="form__label" htmlFor="email">
             E-mail
@@ -57,10 +58,12 @@ function Profile({ onUpdateUserInfo, onSignOut }) {
             required
           />
         </fieldset>
+        <span className="profile__span-error">{errors.email}</span>
         <button
           type="submit"
-          className="form__button form__button_type_profile"
-          disabled={!isValid}
+          className={`form__button form__button_type_profile ${
+            !isValid ? "form__button_type_profile_disabled" : ""
+          }`}
         >
           Редактировать
         </button>

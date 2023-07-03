@@ -2,9 +2,11 @@ import "./SearchForm.css";
 import searchicon from "../../images/search.svg";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
-import { useEffect } from "react";
+import { useState } from "react";
 
 function SearchForm({ valueSearch, setValueSearch, isChecked, handleCheck, filteredMovies }) {
+  const [textError, setTextError] = useState("");
+
   const handleChange = (e) => {
     setValueSearch(e.target.value);
   };
@@ -14,7 +16,8 @@ function SearchForm({ valueSearch, setValueSearch, isChecked, handleCheck, filte
 
     filteredMovies();
     if (!valueSearch) {
-      console.log("Введите название фильма !!");
+      console.log("blya");
+      setTextError("Введите название фильма");
       return;
     } else {
       setValueSearch(valueSearch);
@@ -35,7 +38,10 @@ function SearchForm({ valueSearch, setValueSearch, isChecked, handleCheck, filte
             onChange={handleChange}
             required
           />
-          <button type="submit" className="search-form__button" />
+          <button
+            type="submit"
+            className={`search-form__button ${!valueSearch ? "search-form__button_disabled" : ""}`}
+          />
         </form>
         <img className="search__icon" src={searchicon} alt="Искать" />
         <div className="search__filter">
@@ -43,6 +49,7 @@ function SearchForm({ valueSearch, setValueSearch, isChecked, handleCheck, filte
           <p className="search__text">Короткометражки</p>
         </div>
       </div>
+      <span className="search-form__span-error ">{textError}</span>
     </div>
   );
 }

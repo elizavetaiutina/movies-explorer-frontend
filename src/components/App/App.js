@@ -26,11 +26,12 @@ function App() {
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);
-
   const [loggedIn, setLoggedIn] = useState(false);
+
   const [currentUser, setCurrentUser] = useState({});
-  const [listSavedMovies, setListSavedMovies] = useState([]);
-  const [listMovies, setListMovies] = useState([]);
+
+  const [listSavedMovies, setListSavedMovies] = useState([]); // Сохранённые фильмы
+  const [listMovies, setListMovies] = useState([]); // Фильмы, c beatfilm-movies
 
   const apiMain = new MainApi({
     baseUrl: urlMain,
@@ -39,6 +40,20 @@ function App() {
       "Content-Type": "application/json",
     },
   });
+
+  /* Получаем фильмы с сервиса beatfilm-movies
+  useEffect(() => {
+    apiMovies
+      .getAllMovies()
+      .then((movies) => {
+        setListMovies(movies);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => setIsLoading(false));
+  }, []);*/
+
   /*
   apiUser.getInfoUser().then((user) => {
     console.log(user);
@@ -52,15 +67,6 @@ function App() {
     },
   });
 
-  /* Получаем фильмы с сервиса beatfilm-movies*/
-  /*useEffect(() => {
-    apiMovies.getAllMovies().then((movies) => {
-      setListMovies(movies);
-      console.log(movies);
-      console.log(listMovies);
-    });
-  }, []);*/
-
   useEffect(() => {
     setIsLoading(true);
 
@@ -70,32 +76,47 @@ function App() {
         .getContent(token)
         .then((res) => {
           setLoggedIn(true);
-          setIsLoading(false);
           navigate("/movies", { replace: true });
         })
         .catch((err) => {
           console.log(err);
-        });
+          onSignOut();
+        })
+        .finally(() => setIsLoading(false));
     } else {
       setIsLoading(false);
     }
   }, [loggedIn]);
 
   useEffect(() => {
+    setIsLoading(true);
+
     loggedIn &&
-      Promise.all([apiMain.getInfoUser(), apiMain.getSavedMovies(), apiMovies.getAllMovies()])
-        .then(([user, savedMovies, movies]) => {
+      Promise.all([apiMain.getInfoUser(), apiMovies.getAllMovies()])
+        .then(([user, movies]) => {
           setCurrentUser(user);
-          setListSavedMovies(savedMovies);
           setListMovies(movies);
 
           /* console.log(movies, savedMovies);*/
-
-          setIsLoading(false);
+          /*console.log("user movies", user, movies);*/
         })
         .catch((err) => {
           console.log(`Ошибка: ${err}.`);
-        });
+        })
+        .finally(() => setIsLoading(false));
+  }, [loggedIn]);
+
+  useEffect(() => {
+    loggedIn &&
+      apiMain
+        .getSavedMovies()
+        .then((savedMovies) => {
+          setListSavedMovies(savedMovies);
+        })
+        .catch((err) => {
+          console.log(`Ошибка: ${err}.`);
+        })
+        .finally(() => setIsLoading(false));
   }, [loggedIn]);
 
   /* ДОБАВИТЬ ФИЛЬМ В СОХРАНЁННЫЕ */
@@ -111,21 +132,25 @@ function App() {
         .catch((err) => {
           console.log(`Ошибка: ${err}.`);
         })
-        .finally(() => {
-          setIsLoading(false);
-        });
+        .finally(() => setIsLoading(false));
     }
   }
 
   /* УДАЛИТЬ ФИЛЬМ ИЗ СОХРАНЁННЫХ */
   function handleUnsaveFilm(film) {
+    setIsLoading(true);
+
     apiMain
       .unSaveNewFilm(film._id)
       .then((film) => {
-        setListSavedMovies((state) => state.filter((f) => (f._id === film._id ? "" : f)));
+        const newSavedMovies = listSavedMovies.filter((f) => (f._id === film._id ? "" : f));
+        setListSavedMovies(newSavedMovies);
       })
       .catch((err) => {
         console.log(`Ошибка: ${err}.`);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }
 
@@ -140,9 +165,7 @@ function App() {
       .catch((err) => {
         console.log(`Ошибка: ${err}.`);
       })
-      .finally(() => {
-        setIsLoading(false);
-      });
+      .finally(() => setIsLoading(false));
   }
 
   /* РЕГИСТРАЦИЯ ПОЛЬЗОВАТЕЛЯ */
@@ -221,6 +244,7 @@ function App() {
                     movies={listMovies}
                     savedMovies={listSavedMovies}
                     onSaveFilm={handleSaveFilm}
+                    onUnsaveFilm={handleUnsaveFilm}
                   />
                 }
               />
@@ -232,6 +256,8 @@ function App() {
                     element={SavedMovies}
                     movies={listSavedMovies}
                     onUnsaveFilm={handleUnsaveFilm}
+                    apiMain={apiMain}
+                    setListSavedMovies={setListSavedMovies}
                   />
                 }
               />

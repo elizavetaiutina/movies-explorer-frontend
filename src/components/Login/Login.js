@@ -41,7 +41,7 @@ function Login({ onLogin }) {
               onChange={handleChange}
               required
             />
-            <span className="email-input-error form-login__span-error"></span>
+            <span className="email-input-error form-login__span-error">{errors.email}</span>
             <label className="form-login__label" htmlFor="password">
               Пароль
             </label>
@@ -56,8 +56,11 @@ function Login({ onLogin }) {
               onChange={handleChange}
               required
             />
-            <span className="password-input-error form-login__span-error"></span>
-            <button type="submit" className="form-login__button" disabled={!isValid}>
+            <span className="password-input-error form-login__span-error ">{errors.password}</span>
+            <button
+              type="submit"
+              className={`form-login__button ${!isValid ? "form-login__button_disabled" : ""}`}
+            >
               Войти
             </button>
           </form>

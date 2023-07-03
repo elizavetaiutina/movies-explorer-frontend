@@ -76,7 +76,7 @@
 
 .form-register__span-error {
   box-sizing: border-box;
-  min-height: 16px;
+  min-height: 30px;
   width: 100%;
   margin: 6px 0 2px;
   padding: 0;
@@ -126,11 +126,13 @@
   opacity: 0.8;
 }
 
-.form-register__button:disabled {
+.form-register__button_disabled {
   background: #3457f3a9;
+  color: #ffffff;
   opacity: 1;
 
   cursor: default;
+  pointer-events: none;
 }
 
 .sign-up__text {
