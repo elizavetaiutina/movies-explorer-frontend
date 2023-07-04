@@ -279,7 +279,7 @@ function App() {
                   />
                 }
               />
-              <Route path="*" element={<PageNotFound />} />
+              <Route path="*" element={<PageNotFound loggedIn={loggedIn} />} />
             </Routes>
           )}
         </main>
