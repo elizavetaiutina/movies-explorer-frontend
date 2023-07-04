@@ -59,7 +59,7 @@ function App() {
         .getContent(token)
         .then((res) => {
           setLoggedIn(true);
-          navigate("/movies", { replace: true });
+          navigate(pathname);
         })
         .catch((err) => {
           console.log(`Ошибка: ${err}.`);
