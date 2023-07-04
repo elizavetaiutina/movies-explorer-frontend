@@ -148,22 +148,27 @@ function App() {
 
   /* РЕГИСТРАЦИЯ ПОЛЬЗОВАТЕЛЯ */
   const onRegister = (email, name, password) => {
+    setIsLoading(true);
     auth
       .register(email, name, password)
       .then((data) => {
         if (!data) {
           throw new Error("Что-то пошло не так");
         }
+        onLogin(password, email);
+        //setLoggedIn(true);
+        setCurrentUser(data);
         console.log("Регистрация", data);
+        console.log("currentUser", currentUser);
       })
-      .then(() => {
+      .then((data) => {
         //запрос успешен
-
-        navigate("/signin", { replace: true });
+        //navigate("/movies", { replace: true });
       })
       .catch((err) => {
         console.log("Некорректно заполнено одно из полей");
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   /* АВТОРИЗАЦИЯ ПОЛЬЗОВАТЕЛЯ */
