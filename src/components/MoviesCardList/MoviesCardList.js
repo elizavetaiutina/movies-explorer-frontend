@@ -28,6 +28,10 @@ function MoviesCardList({ movies, savedMovies, onSaveFilm, onUnsaveFilm }) {
     return () => window.removeEventListener("resize", getSizeWindow);
   }, []);
 
+  useEffect(() => {
+    setCountAddedMovies(0);
+  }, [movies]);
+
   const moviesAfterClickButton = useMemo(() => {
     const paginationCounter = size.width < 480 ? 5 : size.width < 1280 ? 8 : 12;
     setInitialMoviesForSizeWindow(paginationCounter);
@@ -58,12 +62,13 @@ function MoviesCardList({ movies, savedMovies, onSaveFilm, onUnsaveFilm }) {
           );
         })}
       </ul>
-      {movies.length <= initialMoviesForSizeWindow ? (
-        ""
-      ) : (
+      {movies.length >= initialMoviesForSizeWindow &&
+      movies.length !== moviesAfterClickButton.length ? (
         <button className="card-list__button" onClick={handleAddCard}>
           Ещё
         </button>
+      ) : (
+        ""
       )}
     </div>
   );
