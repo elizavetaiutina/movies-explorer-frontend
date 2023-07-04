@@ -33,6 +33,8 @@ function App() {
   const [listSavedMovies, setListSavedMovies] = useState([]); // Сохранённые фильмы
   const [listMovies, setListMovies] = useState([]); // Фильмы, c beatfilm-movies
 
+  const [isStatusErrorServer, setIsStatusErrorServer] = useState(false);
+
   const apiMain = new MainApi({
     baseUrl: urlMain,
     headers: {
@@ -152,6 +154,7 @@ function App() {
     auth
       .register(email, name, password)
       .then((data) => {
+        setIsStatusErrorServer(false);
         if (!data) {
           throw new Error("Что-то пошло не так");
         }
@@ -161,12 +164,9 @@ function App() {
         console.log("Регистрация", data);
         console.log("currentUser", currentUser);
       })
-      .then((data) => {
-        //запрос успешен
-        //navigate("/movies", { replace: true });
-      })
       .catch((err) => {
-        console.log("Некорректно заполнено одно из полей");
+        //console.log(err);
+        setIsStatusErrorServer(true);
       })
       .finally(() => setIsLoading(false));
   };
@@ -176,6 +176,7 @@ function App() {
     auth
       .authorize(password, email)
       .then((data) => {
+        setIsStatusErrorServer(false);
         if (!data) {
           throw new Error("Что-то пошло не так");
         }
@@ -190,7 +191,7 @@ function App() {
         navigate("/movies", { replace: true });
       })
       .catch((err) => {
-        console.log("Неправильный логин или пароль");
+        setIsStatusErrorServer(true);
       });
   };
 
@@ -220,8 +221,26 @@ function App() {
             <Preloader />
           ) : (
             <Routes>
-              <Route path="/signup" element={<Register onRegister={onRegister} />} />
-              <Route path="/signin" element={<Login onLogin={onLogin} />} />
+              <Route
+                path="/signup"
+                element={
+                  <Register
+                    onRegister={onRegister}
+                    isStatusErrorServer={isStatusErrorServer}
+                    setIsStatusErrorServer={setIsStatusErrorServer}
+                  />
+                }
+              />
+              <Route
+                path="/signin"
+                element={
+                  <Login
+                    onLogin={onLogin}
+                    isStatusErrorServer={isStatusErrorServer}
+                    setIsStatusErrorServer={setIsStatusErrorServer}
+                  />
+                }
+              />
               <Route path="/" element={<Main />} />
               <Route
                 path="/movies"

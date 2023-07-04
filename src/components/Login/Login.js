@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 
-function Login({ onLogin }) {
+function Login({ onLogin, isStatusErrorServer, setIsStatusErrorServer }) {
   const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation({});
 
   const handleSubmit = (event) => {
@@ -16,6 +16,7 @@ function Login({ onLogin }) {
 
   useEffect(() => {
     resetForm();
+    setIsStatusErrorServer(false);
   }, []);
 
   return (
@@ -57,6 +58,13 @@ function Login({ onLogin }) {
               required
             />
             <span className="password-input-error form-login__span-error ">{errors.password}</span>
+            <span
+              className={`form-login__span-error-server ${
+                isStatusErrorServer ? "form-login__span-error-server_active" : ""
+              }`}
+            >
+              Неправильный логин или пароль! Попробуйте ещё раз
+            </span>
             <button
               type="submit"
               className={`form-login__button ${!isValid ? "form-login__button_disabled" : ""}`}

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 
-function Register({ onRegister }) {
+function Register({ onRegister, isStatusErrorServer, setIsStatusErrorServer }) {
   const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation({});
 
   const handleSubmit = (event) => {
@@ -16,6 +16,7 @@ function Register({ onRegister }) {
 
   useEffect(() => {
     resetForm();
+    setIsStatusErrorServer(false);
   }, []);
 
   return (
@@ -73,6 +74,13 @@ function Register({ onRegister }) {
             />
             <span className="password-input-error form-register__span-error">
               {errors.password}
+            </span>
+            <span
+              className={`form-register__span-error-server ${
+                isStatusErrorServer ? "form-register__span-error-server_active" : ""
+              }`}
+            >
+              Что-то пошло не так! Попробуйте ещё раз
             </span>
             <button
               type="submit"
