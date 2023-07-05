@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 
-import { REG_EXP_NAME } from "../utils/constants";
+import { REG_EXP_NAME, REG_EXP_EMAIL } from "../utils/constants";
 
 //хук управления формой и валидации формы
 export function useFormWithValidation() {
@@ -18,6 +18,19 @@ export function useFormWithValidation() {
       setErrors({
         ...errors,
         [name]: isValidRegExp ? "" : "Убедитесь, что поле 'Имя' не содержит специальных символов",
+      });
+      if (!isValidRegExp) {
+        setIsValid(false);
+      } else setIsValid(true);
+    } else {
+      setErrors({ ...errors, [name]: event.target.validationMessage });
+    }
+
+    if (name === "email" && value.length !== 0) {
+      const isValidRegExp = REG_EXP_EMAIL.test(value);
+      setErrors({
+        ...errors,
+        [name]: isValidRegExp ? "" : "Убедитесь, что поле 'Email' введено корректно",
       });
       if (!isValidRegExp) {
         setIsValid(false);
