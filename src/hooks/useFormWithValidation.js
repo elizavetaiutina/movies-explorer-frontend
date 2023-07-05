@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 
-import { regExpInputName } from "../utils/constants";
+import { REG_EXP_NAME } from "../utils/constants";
 
 //хук управления формой и валидации формы
 export function useFormWithValidation() {
@@ -14,7 +14,7 @@ export function useFormWithValidation() {
     setIsValid(event.target.closest("form").checkValidity());
 
     if (name === "name" && value.length !== 0) {
-      const isValidRegExp = regExpInputName.test(value);
+      const isValidRegExp = REG_EXP_NAME.test(value);
       setErrors({
         ...errors,
         [name]: isValidRegExp ? "" : "Убедитесь, что поле 'Имя' не содержит специальных символов",

@@ -1,9 +1,31 @@
-const urlMovies = "https://api.nomoreparties.co/beatfilm-movies";
-const urlMain = "https://api.elizavetaiutina.nomoredomains.rocks";
+const URL_MOVIES = "https://api.nomoreparties.co/beatfilm-movies";
+const URL_MAIN = "https://api.elizavetaiutina.nomoredomains.rocks";
 /*const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDk2YWE3ZThhOTBkYjVkODQ1YzgwOTEiLCJpYXQiOjE2ODc1OTU2NTUsImV4cCI6MTY4ODIwMDQ1NX0.EJL4bYO1wdDivsSJ3UgBm0xVcKFV12SLzPLmBp8X5GQ";
 */
-const durationForFilter = 40;
-const regExpInputName = /^[a-zA-Zа-яА-Я\sё-]+$/;
+const DURATION_FILM__FOR_FILTER = 40;
+const REG_EXP_NAME = /^[a-zA-Zа-яА-Я\sё-]+$/;
+const REG_EXP_EMAIL = /^[a-zA-Zа-яА-Я\sё-]+$/;
 
-export { urlMovies, urlMain, durationForFilter, regExpInputName };
+const MAX_WIDTH_FOR_MOBILE = 480;
+const COUNT_INITIAL_MOVIES_ON_SCREEN_FOR_MOBILE = 2;
+const COUNT_ADDED_MOVIES_ONCLICK_FOR_MOBILE = 5;
+const MIN_WIDTH_FOR_DESKTOP = 1280;
+const COUNT_ADDED_MOVIES_ONCLICK_FOR_DESKTOP = 3;
+const COUNT_INITIAL_MOVIES_ON_SCREEN_FOR_DESKTOP = 12;
+const COUNT_INITIAL_MOVIES_ON_SCREEN_FOR_PAD = 8;
+
+export {
+  URL_MOVIES,
+  URL_MAIN,
+  DURATION_FILM__FOR_FILTER,
+  REG_EXP_NAME,
+  REG_EXP_EMAIL,
+  MAX_WIDTH_FOR_MOBILE,
+  COUNT_INITIAL_MOVIES_ON_SCREEN_FOR_MOBILE,
+  COUNT_ADDED_MOVIES_ONCLICK_FOR_MOBILE,
+  MIN_WIDTH_FOR_DESKTOP,
+  COUNT_ADDED_MOVIES_ONCLICK_FOR_DESKTOP,
+  COUNT_INITIAL_MOVIES_ON_SCREEN_FOR_DESKTOP,
+  COUNT_INITIAL_MOVIES_ON_SCREEN_FOR_PAD,
+};

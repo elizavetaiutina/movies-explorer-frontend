@@ -3,7 +3,7 @@ import "./Movies.css";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
-import { durationForFilter } from "../../utils/constants";
+import { DURATION_FILM__FOR_FILTER } from "../../utils/constants";
 
 import { useState, useEffect } from "react";
 
@@ -64,7 +64,7 @@ function Movies({ movies, savedMovies, onSaveFilm, onUnsaveFilm }) {
         const moviesAfterSearchWithFilter = movies.filter((item) => {
           return (
             item.nameRU.toLowerCase().includes(valueSearch.toLowerCase()) &&
-            item.duration <= durationForFilter
+            item.duration <= DURATION_FILM__FOR_FILTER
           );
         });
         setArrSearch(moviesAfterSearchWithFilter);

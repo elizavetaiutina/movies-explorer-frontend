@@ -7,7 +7,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 import auth from "../../utils/auth";
 import MainApi from "../../utils/MainApi";
 import MoviesApi from "../../utils/MoviesApi";
-import { urlMovies, urlMain } from "../../utils/constants";
+import { URL_MOVIES, URL_MAIN } from "../../utils/constants";
 
 import PageNotFound from "../PageNotFound/PageNotFound";
 import Register from "../Register/Register";
@@ -36,7 +36,7 @@ function App() {
   const [isStatusErrorServer, setIsStatusErrorServer] = useState(false);
 
   const apiMain = new MainApi({
-    baseUrl: urlMain,
+    baseUrl: URL_MAIN,
     headers: {
       authorization: `Bearer ${localStorage.getItem("token")}`,
       "Content-Type": "application/json",
@@ -44,7 +44,7 @@ function App() {
   });
 
   const apiMovies = new MoviesApi({
-    baseUrl: urlMovies,
+    baseUrl: URL_MOVIES,
     headers: {
       "Content-Type": "application/json",
     },

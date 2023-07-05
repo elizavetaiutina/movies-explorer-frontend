@@ -1,6 +1,15 @@
 import "./MoviesCardList.css";
 
 import MoviesCard from "../MoviesCard/MoviesCard";
+import {
+  MAX_WIDTH_FOR_MOBILE,
+  COUNT_INITIAL_MOVIES_ON_SCREEN_FOR_MOBILE,
+  COUNT_ADDED_MOVIES_ONCLICK_FOR_MOBILE,
+  MIN_WIDTH_FOR_DESKTOP,
+  COUNT_ADDED_MOVIES_ONCLICK_FOR_DESKTOP,
+  COUNT_INITIAL_MOVIES_ON_SCREEN_FOR_DESKTOP,
+  COUNT_INITIAL_MOVIES_ON_SCREEN_FOR_PAD,
+} from "../../utils/constants";
 
 import { useState, useEffect, useMemo } from "react";
 
@@ -33,16 +42,21 @@ function MoviesCardList({ movies, savedMovies, onSaveFilm, onUnsaveFilm }) {
   }, [movies]);
 
   const moviesAfterClickButton = useMemo(() => {
-    const paginationCounter = size.width < 480 ? 5 : size.width < 1280 ? 8 : 12;
+    const paginationCounter =
+      size.width < MAX_WIDTH_FOR_MOBILE
+        ? COUNT_INITIAL_MOVIES_ON_SCREEN_FOR_MOBILE
+        : size.width < MIN_WIDTH_FOR_DESKTOP
+        ? COUNT_INITIAL_MOVIES_ON_SCREEN_FOR_PAD
+        : COUNT_INITIAL_MOVIES_ON_SCREEN_FOR_DESKTOP;
     setInitialMoviesForSizeWindow(paginationCounter);
     return movies.slice(0, paginationCounter + countAddedMovies);
   }, [movies, countAddedMovies, size]);
 
   function handleAddCard() {
     let countAdd;
-    if (size.width > 1280) {
-      countAdd = 3;
-    } else countAdd = 2;
+    if (size.width > MIN_WIDTH_FOR_DESKTOP) {
+      countAdd = COUNT_ADDED_MOVIES_ONCLICK_FOR_DESKTOP;
+    } else countAdd = COUNT_ADDED_MOVIES_ONCLICK_FOR_MOBILE;
 
     setCountAddedMovies((prev) => prev + countAdd);
   }

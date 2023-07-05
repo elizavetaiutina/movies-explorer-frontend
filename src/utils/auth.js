@@ -1,4 +1,4 @@
-import { urlMain } from "./constants";
+import { URL_MAIN } from "./constants";
 
 class Auth {
   constructor({ baseUrl }) {
@@ -46,7 +46,7 @@ class Auth {
 }
 
 const auth = new Auth({
-  baseUrl: urlMain,
+  baseUrl: URL_MAIN,
 });
 
 export default auth;
