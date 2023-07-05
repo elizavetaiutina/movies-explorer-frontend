@@ -150,7 +150,7 @@ function App() {
 
   /* РЕГИСТРАЦИЯ ПОЛЬЗОВАТЕЛЯ */
   const onRegister = (email, name, password) => {
-    setIsLoading(true);
+    //setIsLoading(true);
     auth
       .register(email, name, password)
       .then((data) => {
@@ -158,14 +158,16 @@ function App() {
         if (!data) {
           throw new Error("Что-то пошло не так");
         }
-        onLogin(password, email);
-        //setLoggedIn(true);
-        setCurrentUser(data);
-        console.log("Регистрация", data);
-        console.log("currentUser", currentUser);
+        if (data) {
+          onLogin(password, email);
+          //setLoggedIn(true);
+          setCurrentUser(data);
+          console.log("Регистрация", data);
+          console.log("currentUser", currentUser);
+        }
       })
       .catch((err) => {
-        //console.log(err);
+        console.log("err");
         setIsStatusErrorServer(true);
       })
       .finally(() => setIsLoading(false));
