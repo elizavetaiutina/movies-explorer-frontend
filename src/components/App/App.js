@@ -34,6 +34,7 @@ function App() {
   const [listMovies, setListMovies] = useState([]); // Фильмы, c beatfilm-movies
 
   const [isStatusErrorServer, setIsStatusErrorServer] = useState(false);
+  const [isStatusOKServer, setIsStatusOKServer] = useState(false);
 
   const apiMain = new MainApi({
     baseUrl: URL_MAIN,
@@ -136,14 +137,17 @@ function App() {
 
   /* ИЗМЕНЕНИЕ ДАННЫХ ПОЛЬЗОВАТЕЛЯ */
   function handleUpdateUserInfo(data) {
-    setIsLoading(true);
+    //setIsLoading(true);
     apiMain
       .editUserInfo(data)
       .then((data) => {
+        setIsStatusErrorServer(false);
+        setIsStatusOKServer(true);
         setCurrentUser(data);
       })
       .catch((err) => {
         console.log(`Ошибка: ${err}.`);
+        setIsStatusErrorServer(true);
       })
       .finally(() => setIsLoading(false));
   }
@@ -163,11 +167,9 @@ function App() {
           //setLoggedIn(true);
           setCurrentUser(data);
           console.log("Регистрация", data);
-          console.log("currentUser", currentUser);
         }
       })
       .catch((err) => {
-        console.log("err");
         setIsStatusErrorServer(true);
       })
       .finally(() => setIsLoading(false));
@@ -278,6 +280,10 @@ function App() {
                     element={Profile}
                     onUpdateUserInfo={handleUpdateUserInfo}
                     onSignOut={onSignOut}
+                    isStatusErrorServer={isStatusErrorServer}
+                    setIsStatusErrorServer={setIsStatusErrorServer}
+                    isStatusOKServer={isStatusOKServer}
+                    setIsStatusOKServer={setIsStatusOKServer}
                   />
                 }
               />

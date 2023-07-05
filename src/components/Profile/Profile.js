@@ -5,7 +5,14 @@ import { Link } from "react-router-dom";
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 
-function Profile({ onUpdateUserInfo, onSignOut }) {
+function Profile({
+  onUpdateUserInfo,
+  onSignOut,
+  isStatusErrorServer,
+  setIsStatusErrorServer,
+  isStatusOKServer,
+  setIsStatusOKServer,
+}) {
   const { values, handleChange, errors, isValid, setValues } = useFormWithValidation({});
 
   const currentUser = useContext(CurrentUserContext);
@@ -20,6 +27,14 @@ function Profile({ onUpdateUserInfo, onSignOut }) {
       email: values.email,
     });
   }
+
+  useEffect(() => {
+    setIsStatusErrorServer(false);
+  }, [isValid]);
+
+  useEffect(() => {
+    setIsStatusOKServer(false);
+  }, [isStatusErrorServer]);
 
   return (
     <section className="profile">
@@ -59,10 +74,26 @@ function Profile({ onUpdateUserInfo, onSignOut }) {
           />
         </fieldset>
         <span className="profile__span-error">{errors.email}</span>
+        <span
+          className={`profile__span-success ${
+            isStatusOKServer ? "profile__span-success_active" : ""
+          }`}
+        >
+          Данные успешно обновлены !
+        </span>
+        <span
+          className={`form-profile__span-error-server ${
+            isStatusErrorServer ? "form-profile__span-error-server_active" : ""
+          }`}
+        >
+          Что-то пошло не так! Попробуйте ещё раз
+        </span>
         <button
           type="submit"
           className={`form__button form__button_type_profile ${
-            !isValid ? "form__button_type_profile_disabled" : ""
+            !isValid || (values.name === currentUser.name && values.email === currentUser.email)
+              ? "form__button_type_profile_disabled"
+              : ""
           }`}
         >
           Редактировать
