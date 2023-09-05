@@ -1,0 +1,196 @@
+.navsign {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
+}
+
+.navsign__signup {
+  box-sizing: border-box;
+  text-decoration: none;
+  cursor: pointer;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #000000;
+
+  margin: 0;
+  padding: 0;
+
+  transition: opacity 0.2s ease-in-out;
+}
+
+.navsign__signup:hover {
+  opacity: 0.7;
+}
+
+.navsign__signin {
+  box-sizing: border-box;
+  text-decoration: none;
+  cursor: pointer;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+  color: #ffffff;
+
+  background: #3456f3;
+  border-radius: 3px;
+  margin: 0;
+  padding: 8px 20px;
+
+  transition: opacity 0.2s ease-in-out;
+}
+
+.navsign__signin:hover {
+  opacity: 0.7;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+
+  margin: 0 0 0 44px;
+  padding: 0;
+  width: calc(100% - 38px);
+}
+
+.navigation__links {
+  display: flex;
+  gap: 16px;
+
+  margin: 0;
+  padding: 0;
+}
+
+.navigation__link {
+  text-decoration: none;
+  cursor: pointer;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: right;
+  color: #000000;
+
+  margin: 0;
+  padding: 0;
+
+  transition: opacity 0.2s ease-in-out;
+}
+
+.navigation__link:hover {
+  opacity: 0.7;
+}
+
+.navigation__link_active {
+  font-weight: 500;
+  cursor: default;
+  opacity: 1;
+}
+
+.navigation__button {
+  text-decoration: none;
+  cursor: pointer;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+
+  background: #f4f4f4;
+  border-radius: 20px;
+
+  padding: 8px 20px;
+  margin: 0;
+
+  transition: opacity 0.2s ease-in-out;
+}
+
+.navigation__button:hover {
+  opacity: 0.8;
+}
+
+.burger {
+  display: none;
+}
+
+@media screen and (max-width: 790px) {
+  .burger {
+    cursor: pointer;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 7px;
+    list-style: none;
+
+    margin: 0;
+    padding: 0;
+  }
+
+  .burger__item {
+    background: #000000;
+    box-sizing: border-box;
+    width: 23px;
+    height: 2px;
+
+    margin: 0;
+    padding: 0;
+  }
+
+  .navigation {
+    justify-content: flex-end;
+    position: relative;
+  }
+  .navigation__button {
+    display: none;
+  }
+
+  .navigation__links {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .navsign {
+    padding: 0;
+    gap: 14px;
+  }
+
+  .navsign__links {
+    gap: 14px;
+  }
+
+  .navsign__signup {
+    font-size: 10px;
+    margin-bottom: 4px;
+  }
+
+  .navsign__signin {
+    width: 54px;
+    height: 26px;
+    font-size: 10px;
+
+    padding: 5px 12px;
+    margin: 0 0 4px;
+  }
+}
